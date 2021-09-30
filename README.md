@@ -1,5 +1,9 @@
 # TEMPLATE-NESTJS
 
+This project is my template using NestJS.
+
+Few routes has already been defined, the project has already a system of authentication using Passport.
+
 ## Installation
 
 1. Create the project
