@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  nginx:
+    image: jwilder/nginx-proxy
+    container_name: labo-nginx
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      kevin-network:
+  mongodb:
+    image: mongo:latest
+    container_name: labo-mongodb
+    hostname: mongodb
+    volumes:
+        - ./mongodb/init/:/docker-entrypoint-initdb.d/:ro
+        - ./mongodb/data/db/:/data/db/
+        - ./mongodb/data/log/:/var/log/mongodb/
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+        MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+        MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+    ports:
+        - "${MONGO_PORT}:28017"
+    command: mongod --port ${MONGO_PORT}
+    healthcheck:
+      test: mongo --port ${MONGO_PORT} --eval "db.adminCommand('ping')" || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      kevin-network:
+  server1:
+    build: ./server1
+    container_name: ${CONTAINER_NAME_SERVER_1}
+    environment:
+      - VIRTUAL_HOST=${VIRTUAL_HOST_SERVER_1}
+      - VIRTUAL_PORT=${VIRTUAL_PORT_SERVER_1}
+    ports:
+      - "${VIRTUAL_PORT_SERVER_1}"
+    depends_on:
+      - mongodb
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:${VIRTUAL_PORT_SERVER_1} || exit 1
+      interval: 30s
+      retries: 5
+      start_period: 2s
+      timeout: 10s
+    networks:
+      kevin-network:
+networks:
+  kevin-network:
