@@ -11,7 +11,9 @@ import { UsersModule } from './users/users.module';
 @Module({
   imports: [
     Experience0Module,
-    MongooseModule.forRoot(`mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@mongodb:${process.env.MONGO_PORT}/${process.env.MONGO_INITDB_DATABASE}?authSource=admin`),
+    MongooseModule.forRoot(
+      `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@mongodb:${process.env.MONGO_PORT}/${process.env.MONGO_INITDB_DATABASE}?authSource=admin`,
+    ),
     ConfigModule.forRoot({
       envFilePath: ['.env'],
       isGlobal: true,
