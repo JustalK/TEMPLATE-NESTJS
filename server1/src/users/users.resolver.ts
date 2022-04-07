@@ -8,11 +8,11 @@ export class UsersResolver {
   constructor(private readonly usersService: UsersService) {}
 
   @Query((returns) => User)
-  async recipe(@Args('id') id: string): Promise<User> {
-    const recipe = await this.usersService.findOne(id);
-    if (!recipe) {
+  async userFindOne(@Args('id') id: string): Promise<User> {
+    const user = await this.usersService.findOne(id);
+    if (!user) {
       throw new NotFoundException(id);
     }
-    return recipe;
+    return user;
   }
 }
