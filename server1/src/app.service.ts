@@ -6,7 +6,7 @@ export class AppService {
   getStatus(): StatusApp {
     return {
       status: 'working',
-      environment: 'dev',
+      environment: process.env.NODE_ENV,
     };
   }
 }

@@ -1,0 +1,16 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""user"""
+type User {
+  id: ID!
+  firstname: String!
+  lastname: String!
+  username: String!
+  password: String!
+}
+
+type Query {
+  recipe(id: String!): User!
+}
