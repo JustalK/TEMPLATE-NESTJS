@@ -38,3 +38,5 @@ ConfigModule.forRoot({
   isGlobal: true
 }),
 ```
+
+https://github.com/joeygoksu/prime-nestjs

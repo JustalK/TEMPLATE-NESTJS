@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { User } from './models/user.model';
 import { NotFoundException } from '@nestjs/common';
 import { UsersService } from './users.service';
@@ -10,7 +10,7 @@ export class UsersResolver {
 
   @Query((returns) => User)
   async userFindOne(@Args('id') id: string): Promise<User> {
-    const user = await this.usersService.findOne(id);
+    const user = await this.usersService.findAll(id);
     if (!user) {
       throw new NotFoundException(id);
     }
@@ -18,7 +18,7 @@ export class UsersResolver {
   }
 
   @Mutation((returns) => User)
-  async upvotePost(@Args('CreateUserInput') createUserInput: CreateUserInput) {
+  async userCreate(@Args('CreateUserInput') createUserInput: CreateUserInput) {
     return this.usersService.create(createUserInput);
   }
 }
