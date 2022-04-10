@@ -9,10 +9,10 @@ export class UsersResolver {
   constructor(private readonly usersService: UsersService) {}
 
   @Query((returns) => User)
-  async userFindOne(@Args('id') id: string): Promise<User> {
-    const user = await this.usersService.findAll(id);
+  async userFindOne(): Promise<User[]> {
+    const user = await this.usersService.findAll();
     if (!user) {
-      throw new NotFoundException(id);
+      throw new NotFoundException();
     }
     return user;
   }
