@@ -4,11 +4,11 @@ import { NotFoundException } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserInput } from './dto/createUser.input';
 
-@Resolver((of) => User)
+@Resolver(() => User)
 export class UsersResolver {
   constructor(private readonly usersService: UsersService) {}
 
-  @Query((returns) => User)
+  @Query(() => User)
   async userFindOne(): Promise<User[]> {
     const user = await this.usersService.findAll();
     if (!user) {
@@ -17,7 +17,7 @@ export class UsersResolver {
     return user;
   }
 
-  @Mutation((returns) => User)
+  @Mutation(() => User)
   async userCreate(@Args('CreateUserInput') createUserInput: CreateUserInput) {
     return this.usersService.create(createUserInput);
   }

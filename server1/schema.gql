@@ -4,13 +4,20 @@
 
 """user"""
 type User {
-  id: ID!
-  firstname: String!
-  lastname: String!
-  username: String!
-  password: String!
+  _id: String!
+
+  """User firstName """
+  name: String!
 }
 
 type Query {
-  recipe(id: String!): User!
+  userFindOne: User!
+}
+
+type Mutation {
+  userCreate(CreateUserInput: CreateUserInput!): User!
+}
+
+input CreateUserInput {
+  name: String!
 }
