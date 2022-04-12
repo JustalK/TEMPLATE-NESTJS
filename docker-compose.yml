@@ -44,6 +44,8 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
       - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE}
       - MONGO_PORT=${MONGO_PORT}
+    volumes:
+      - ./server1:/usr/src/app
     ports:
       - "${VIRTUAL_PORT_SERVER_1}"
     depends_on:
