@@ -40,3 +40,4 @@ ConfigModule.forRoot({
 ```
 
 https://github.com/joeygoksu/prime-nestjs
+https://javascript.plainenglish.io/graphql-nodejs-mongodb-made-easy-with-nestjs-and-mongoose-29f9c0ea7e1d
