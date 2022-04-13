@@ -9,7 +9,7 @@ export class User {
   _id: MongooseSchema.Types.ObjectId;
 
   @Prop()
-  @Field(() => String, { description: 'User firstName ' })
+  @Field(() => String, { description: 'User firstName' })
   name: string;
 }
 

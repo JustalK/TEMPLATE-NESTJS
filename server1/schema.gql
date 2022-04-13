@@ -6,12 +6,12 @@
 type User {
   _id: String!
 
-  """User firstName """
+  """User firstName"""
   name: String!
 }
 
 type Query {
-  userFindOne: User!
+  userFindOne: [User!]!
 }
 
 type Mutation {
