@@ -4,10 +4,14 @@
 
 """user"""
 type User {
+  """ID of the user"""
   _id: String!
 
-  """User firstName"""
+  """Name of the user"""
   name: String!
+
+  """Password of the user"""
+  password: String!
 }
 
 type Query {

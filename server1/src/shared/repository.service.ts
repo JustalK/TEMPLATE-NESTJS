@@ -8,7 +8,6 @@ export class RepositoryService<M, CreateInput, UpdateInput> {
     return obj.save();
   }
 
-  /** https://github.com/DefinitelyTyped/DefinitelyTyped/issues/39358 **/
   async update(_id: string, data: UpdateInput): Promise<M> {
     return this.model.findByIdAndUpdate(_id, data, { new: true });
   }
