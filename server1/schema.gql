@@ -14,12 +14,32 @@ type User {
   password: String!
 }
 
+type ResultUnion {
+  """ID of the user"""
+  _id: String!
+
+  """Name of the user"""
+  username: String!
+
+  """Password of the user"""
+  password: String!
+
+  """The access token of the user"""
+  access_token: String!
+}
+
 type Query {
   userFindOne: [User!]!
 }
 
 type Mutation {
+  login(LoginInput: LoginInput!): ResultUnion!
   userCreate(CreateUserInput: CreateUserInput!): User!
+}
+
+input LoginInput {
+  username: String!
+  password: String!
 }
 
 input CreateUserInput {
