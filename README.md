@@ -60,6 +60,7 @@ By example, you could check if the server2 is up with this command :
 ```
 $ ping api.server2.net
 ```
+mongo "mongodb://admin:test@localhost:28017/test?authSource=admin"
 
 ## Links
 
