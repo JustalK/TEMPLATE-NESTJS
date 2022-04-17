@@ -33,13 +33,9 @@ type Query {
 }
 
 type Mutation {
-  login(LoginInput: LoginInput!): ResultUnion!
+  """Allow an user to connect to the app"""
+  login(username: String!, password: String!): ResultUnion!
   userCreate(CreateUserInput: CreateUserInput!): User!
-}
-
-input LoginInput {
-  username: String!
-  password: String!
 }
 
 input CreateUserInput {
