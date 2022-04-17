@@ -8,7 +8,7 @@ type User {
   _id: String!
 
   """Name of the user"""
-  name: String!
+  username: String!
 
   """Password of the user"""
   password: String!

@@ -9,3 +9,10 @@ db.createUser({
   ],
 });
 db.createCollection('test');
+db.createCollection('users');
+db.users.insertMany([
+  {
+    username: 'kevin',
+    password: 'test',
+  },
+]);
