@@ -11,7 +11,7 @@ export class User {
 
   @Prop({ required: true })
   @Field(() => String, { description: 'Name of the user' })
-  name: string;
+  username: string;
 
   @Prop({ required: true })
   @Field(() => String, { description: 'Password of the user' })

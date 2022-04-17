@@ -18,4 +18,8 @@ export class UsersService extends RepositoryService<
   ) {
     super(userModel);
   }
+
+  async findByUsername(username: string): Promise<User> {
+    return this.userModel.findOne({ username });
+  }
 }
