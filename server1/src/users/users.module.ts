@@ -3,6 +3,7 @@ import { UsersService } from './users.service';
 import { UsersResolver } from './users.resolver';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from './models/user.model';
+import { NotFoundService } from '../shared/errors/notFound.service';
 
 @Module({
   imports: [
@@ -13,7 +14,7 @@ import { User, UserSchema } from './models/user.model';
       },
     ]),
   ],
-  providers: [UsersResolver, UsersService],
+  providers: [UsersResolver, UsersService, NotFoundService],
   exports: [UsersService],
 })
 export class UsersModule {}
