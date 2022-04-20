@@ -1,5 +1,6 @@
+import moduleAlias from 'module-alias';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { AppModule } from '@src/app.module';
 import * as helmet from 'helmet';
 import * as csurf from 'csurf';
 
