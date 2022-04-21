@@ -1,4 +1,4 @@
-import { Field, ObjectType, IntersectionType } from '@nestjs/graphql';
+import { Field, ObjectType } from '@nestjs/graphql';
 
 @ObjectType({ description: 'user' })
 export class Payload {

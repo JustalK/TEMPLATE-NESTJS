@@ -1,6 +1,6 @@
-import { Field, ObjectType } from '@nestjs/graphql';
-import { MinLength, MaxLength } from 'class-validator';
 import { Schema as MongooseSchema } from 'mongoose';
+import { MinLength, MaxLength } from 'class-validator';
+import { Field, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema()

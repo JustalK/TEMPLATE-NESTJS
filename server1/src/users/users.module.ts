@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { UsersService } from './users.service';
-import { UsersResolver } from './users.resolver';
 import { MongooseModule } from '@nestjs/mongoose';
-import { User, UserSchema } from './models/user.model';
-import { UserNotFoundService } from '../shared/errors/userNotFound.service';
+import { UsersService } from '@src/users/users.service';
+import { UsersResolver } from '@src/users/users.resolver';
+import { User, UserSchema } from '@src/users/models/user.model';
+import { UserNotFoundService } from '@src/shared/errors/userNotFound.service';
 
 @Module({
   imports: [

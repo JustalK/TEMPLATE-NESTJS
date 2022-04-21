@@ -1,11 +1,11 @@
+import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { CreateUserInput } from './dto/createUser.input';
-import { UpdateUserInput } from './dto/updateUser.input';
-import { User } from './models/user.model';
-import { RepositoryService } from '../shared/repository.service';
-import { UserNotFoundService } from '../shared/errors/userNotFound.service';
+import { CreateUserInput } from '@src/users/dto/createUser.input';
+import { UpdateUserInput } from '@src/users/dto/updateUser.input';
+import { User } from '@src/users/models/user.model';
+import { RepositoryService } from '@src/shared/repository.service';
+import { UserNotFoundService } from '@src/shared/errors/userNotFound.service';
 
 @Injectable()
 export class UsersService extends RepositoryService<

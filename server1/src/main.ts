@@ -1,4 +1,4 @@
-import moduleAlias from 'module-alias';
+import 'module-alias';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from '@src/app.module';
 import * as helmet from 'helmet';

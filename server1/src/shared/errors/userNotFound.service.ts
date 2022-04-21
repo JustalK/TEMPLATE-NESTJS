@@ -1,4 +1,4 @@
-import { NotFoundService } from './libs/notFound.service';
+import { NotFoundService } from '@src/shared/errors/libs/notFound.service';
 
 export class UserNotFoundService extends NotFoundService {
   trigger(username: string) {
