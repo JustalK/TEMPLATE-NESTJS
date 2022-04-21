@@ -91,6 +91,9 @@
   },
   "_moduleAliases": {
     "@root": ".",
-    "@src": "./src"
+    "@src": "./src",
+    "@interfaces": "./src/interfaces",
+    "@shared": "./src/shared",
+    "@modules": "./src/modules"
   }
 }

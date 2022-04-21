@@ -1,8 +1,8 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { NotFoundException } from '@nestjs/common';
-import { User } from '@src/users/models/user.model';
-import { UsersService } from '@src/users/users.service';
-import { CreateUserInput } from '@src/users/dto/createUser.input';
+import { User } from '@modules/users/models/user.model';
+import { UsersService } from '@modules/users/users.service';
+import { CreateUserInput } from '@modules/users/dto/createUser.input';
 
 @Resolver(() => User)
 export class UsersResolver {

@@ -1,8 +1,8 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
-import { User } from '@src/users/models/user.model';
-import { Payload } from '@src/auth/models/payload.model';
-import { AuthService } from '@src/auth/auth.service';
-import { LoginArgs } from '@src/auth/dto/login.args';
+import { User } from '@modules/users/models/user.model';
+import { Payload } from '@modules/auth/models/payload.model';
+import { AuthService } from '@modules/auth/auth.service';
+import { LoginArgs } from '@modules/auth/dto/login.args';
 
 import { ObjectType, IntersectionType } from '@nestjs/graphql';
 @ObjectType()
