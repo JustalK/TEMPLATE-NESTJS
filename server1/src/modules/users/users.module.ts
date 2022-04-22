@@ -3,7 +3,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersService } from '@modules/users/users.service';
 import { UsersResolver } from '@modules/users/users.resolver';
 import { User, UserSchema } from '@modules/users/models/user.model';
-import { UserNotFoundService } from '@src/shared/errors/userNotFound.service';
+import { UserNotFoundService } from '@shared/errors/userNotFound.service';
+import { UsernameAlreadyUsedService } from '@shared/errors/usernameAlreadyUsed.service';
 
 @Module({
   imports: [
@@ -14,7 +15,12 @@ import { UserNotFoundService } from '@src/shared/errors/userNotFound.service';
       },
     ]),
   ],
-  providers: [UsersResolver, UsersService, UserNotFoundService],
+  providers: [
+    UsersResolver,
+    UsersService,
+    UserNotFoundService,
+    UsernameAlreadyUsedService,
+  ],
   exports: [UsersService],
 })
 export class UsersModule {}

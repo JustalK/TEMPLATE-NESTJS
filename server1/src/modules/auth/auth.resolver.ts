@@ -3,6 +3,7 @@ import { User } from '@modules/users/models/user.model';
 import { Payload } from '@modules/auth/models/payload.model';
 import { AuthService } from '@modules/auth/auth.service';
 import { LoginArgs } from '@modules/auth/dto/login.args';
+import { SigningArgs } from '@modules/auth/dto/signing.args';
 
 import { ObjectType, IntersectionType } from '@nestjs/graphql';
 @ObjectType()
@@ -20,6 +21,22 @@ export class AuthResolver {
     const { _doc: user } = await this.authService.validateUser(
       loginArgs.username,
       loginArgs.password,
+    );
+    const payload = await this.authService.createPayload(user);
+    return {
+      ...user,
+      ...payload,
+    };
+  }
+
+  @Mutation(() => ResultUnion, {
+    name: 'signing',
+    description: 'Allow a visitor to register to the app',
+  })
+  async signing(@Args() signingArgs: SigningArgs) {
+    const { _doc: user } = await this.authService.signing(
+      signingArgs.username,
+      signingArgs.password,
     );
     const payload = await this.authService.createPayload(user);
     return {
