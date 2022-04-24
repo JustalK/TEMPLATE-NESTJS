@@ -29,7 +29,7 @@ type ResultUnion {
 }
 
 type Query {
-  userFindOne: [User!]!
+  userFindAll: [User!]!
 }
 
 type Mutation {
