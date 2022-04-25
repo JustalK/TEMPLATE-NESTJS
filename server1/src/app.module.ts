@@ -23,6 +23,7 @@ import { AuthModule } from '@modules/auth/auth.module';
       debug: true,
       playground: true,
       autoSchemaFile: 'schema.gql',
+      context: ({ req }) => ({ req }),
     }),
     AuthModule,
     UsersModule,
