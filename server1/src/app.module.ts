@@ -15,7 +15,7 @@ import { AuthModule } from '@modules/auth/auth.module';
       `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@mongodb:${process.env.MONGO_PORT}/${process.env.MONGO_INITDB_DATABASE}?authSource=admin`,
     ),
     ConfigModule.forRoot({
-      envFilePath: ['.env'],
+      envFilePath: ['.env', './server1/.env'],
       isGlobal: true,
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({

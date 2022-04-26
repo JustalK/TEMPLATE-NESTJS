@@ -44,6 +44,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
       - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE}
       - MONGO_PORT=${MONGO_PORT}
+      - JWT_TOKEN_EXPIRATION=${JWT_TOKEN_EXPIRATION}
     volumes:
       - ./server1:/usr/src/app
     ports:
