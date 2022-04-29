@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import configuration from '@shared/configs/configuration';
 
 import { UsersModule } from '@modules/users/users.module';
 import { AuthModule } from '@modules/auth/auth.module';
@@ -15,7 +16,7 @@ import { AuthModule } from '@modules/auth/auth.module';
       `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@mongodb:${process.env.MONGO_PORT}/${process.env.MONGO_INITDB_DATABASE}?authSource=admin`,
     ),
     ConfigModule.forRoot({
-      envFilePath: ['.env', './server1/.env'],
+      load: [configuration],
       isGlobal: true,
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
