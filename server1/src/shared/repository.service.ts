@@ -12,6 +12,10 @@ export class RepositoryService<M, CreateInput, UpdateInput> {
     return this.model.findByIdAndUpdate(_id, data, { new: true });
   }
 
+  async findOne<V>(find: V): Promise<M> {
+    return this.model.findOne(find);
+  }
+
   async findAll(): Promise<M[]> {
     return this.model.find();
   }
@@ -26,5 +30,9 @@ export class RepositoryService<M, CreateInput, UpdateInput> {
 
   async removeById(_id: string): Promise<M> {
     return this.model.findByIdAndDelete(_id);
+  }
+
+  async exists<V>(find: V): Promise<boolean> {
+    return this.model.exists(find);
   }
 }

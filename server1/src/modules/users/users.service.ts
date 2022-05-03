@@ -23,9 +23,9 @@ export class UsersService extends RepositoryService<
     super(userModel);
   }
 
-  async findByUsername(username: string, exception = true): Promise<User> {
-    const user = await this.userModel.findOne({ username });
-    if (!user && exception) {
+  async findByUsername(username: string): Promise<User> {
+    const user = await this.findOne<{ username: string }>({ username });
+    if (!user) {
       this.userNotFoundService.trigger(username);
     }
 
@@ -33,7 +33,9 @@ export class UsersService extends RepositoryService<
   }
 
   async create(data: CreateUserInput): Promise<User> {
-    const tmpUser = await this.findByUsername(data.username, false);
+    const tmpUser = await this.exists<{ username: string }>({
+      username: data.username,
+    });
     if (tmpUser) {
       this.usernameAlreadyUsedService.trigger(data.username);
     }
