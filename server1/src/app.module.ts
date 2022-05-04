@@ -2,11 +2,12 @@ import { Module } from '@nestjs/common';
 import { AppController } from '@src/app.controller';
 import { AppService } from '@src/app.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import configuration from '@shared/configs/configuration';
-
+import { WinstonModule } from 'nest-winston';
+import { WinstonOptionService } from '@shared/configs/services/winston-option.service';
 import { UsersModule } from '@modules/users/users.module';
 import { AuthModule } from '@modules/auth/auth.module';
 
@@ -25,6 +26,11 @@ import { AuthModule } from '@modules/auth/auth.module';
       playground: true,
       autoSchemaFile: 'schema.gql',
       context: ({ req }) => ({ req }),
+    }),
+    WinstonModule.forRootAsync({
+      imports: [ConfigModule],
+      useClass: WinstonOptionService,
+      inject: [ConfigService],
     }),
     AuthModule,
     UsersModule,

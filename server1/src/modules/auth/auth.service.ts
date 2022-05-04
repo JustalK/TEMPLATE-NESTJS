@@ -1,12 +1,15 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject, LoggerService } from '@nestjs/common';
 import { UsersService } from '@modules/users/users.service';
 import { JwtService } from '@nestjs/jwt';
+import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly usersService: UsersService,
     private jwtService: JwtService,
+    @Inject(WINSTON_MODULE_NEST_PROVIDER)
+    private readonly logger: LoggerService,
   ) {}
 
   async validateUser(username: string, pass: string): Promise<any> {
@@ -25,6 +28,7 @@ export class AuthService {
   }
 
   async signing(username: string, password: string): Promise<any> {
+    this.logger.log('[SIGNING]');
     const user = await this.usersService.create({
       username,
       password,
