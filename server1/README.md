@@ -2,7 +2,14 @@
 
 This project is my template using NestJS.
 
-Few routes has already been defined, the project has already a system of authentication using Passport.
+## Organization
+#### Organization of the source folder
+
+| Folder's Name | Description of the folder                               |
+| :------------ | :------------------------------------------------------ |
+| interfaces    | The interfaces of the data                              |
+| modules       | Regroup the modules of the app                          |
+| shared        | Regroup the code shared between the modules             |
 
 ## Installation
 
