@@ -12,7 +12,12 @@ export class AuthService {
     private readonly logger: LoggerService,
   ) {}
 
-  async validateUser(username: string, pass: string): Promise<any> {
+  async login(username: string, pass: string): Promise<any> {
+    this.logger.log(`Errors 2`, {
+      __filename,
+      name: this.login.name,
+    });
+
     const user = await this.usersService.findByUsername(username);
     if (user && user.password === pass) {
       return user;
@@ -28,7 +33,6 @@ export class AuthService {
   }
 
   async signing(username: string, password: string): Promise<any> {
-    this.logger.log('[SIGNING]');
     const user = await this.usersService.create({
       username,
       password,

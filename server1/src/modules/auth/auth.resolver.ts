@@ -18,7 +18,7 @@ export class AuthResolver {
     description: 'Allow an user to connect to the app',
   })
   async login(@Args() loginArgs: LoginArgs) {
-    const { _doc: user } = await this.authService.validateUser(
+    const { _doc: user } = await this.authService.login(
       loginArgs.username,
       loginArgs.password,
     );
