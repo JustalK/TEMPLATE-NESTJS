@@ -56,6 +56,10 @@ export class WinstonOptionService implements WinstonModuleOptionsFactory {
     );
   }
 
+  /**
+   * @param {Date} timestamp The time that we want to beautify like in nestJS
+   * @return {string} The new way to show the time in a beautify way
+   * */
   prepareDateFormat(timestamp: Date): string {
     return new Date(timestamp)
       .toLocaleDateString(LOCAL_TIMESTAMP, {
