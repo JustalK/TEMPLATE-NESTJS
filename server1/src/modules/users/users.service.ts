@@ -6,7 +6,6 @@ import { UpdateUserInput } from '@modules/users/dto/updateUser.input';
 import { User } from '@modules/users/models/user.model';
 import { RepositoryService } from '@src/shared/repository.service';
 import { UserNotFoundService } from '@src/shared/errors/userNotFound.service';
-import { UsernameAlreadyUsedService } from '@shared/errors/usernameAlreadyUsed.service';
 
 @Injectable()
 export class UsersService extends RepositoryService<
@@ -18,7 +17,6 @@ export class UsersService extends RepositoryService<
     @InjectModel(User.name)
     private readonly userModel: Model<User>,
     private userNotFoundService: UserNotFoundService,
-    private usernameAlreadyUsedService: UsernameAlreadyUsedService,
   ) {
     super(userModel);
   }
@@ -30,17 +28,5 @@ export class UsersService extends RepositoryService<
     }
 
     return user;
-  }
-
-  async create(data: CreateUserInput): Promise<User> {
-    const tmpUser = await this.exists<{ username: string }>({
-      username: data.username,
-    });
-    if (tmpUser) {
-      this.usernameAlreadyUsedService.trigger(data.username);
-    }
-
-    const obj: any = new this.userModel(data);
-    return obj.save();
   }
 }

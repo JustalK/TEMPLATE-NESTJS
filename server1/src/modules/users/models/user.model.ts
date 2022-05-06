@@ -1,4 +1,4 @@
-import { Schema as MongooseSchema } from 'mongoose';
+import * as mongoose from 'mongoose';
 import { MinLength, MaxLength } from 'class-validator';
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
@@ -7,7 +7,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 @ObjectType({ description: 'user' })
 export class User {
   @Field(() => String, { description: 'ID of the user' })
-  _id: MongooseSchema.Types.ObjectId;
+  _id: mongoose.Schema.Types.ObjectId;
 
   @Prop({ required: true })
   @Field(() => String, { description: 'Name of the user' })
@@ -21,3 +21,8 @@ export class User {
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
+
+UserSchema.path('username').validate(async function (value: string) {
+  const result = await this.model('User').count({ username: value }).exec();
+  return result === 0;
+}, 'Username already taken by someone else');
