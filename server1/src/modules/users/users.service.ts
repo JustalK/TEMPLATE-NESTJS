@@ -1,48 +1,34 @@
 import { Injectable } from '@nestjs/common';
 import { User } from '@modules/users/models/user.model';
+import { CreateUserInput } from '@modules/users/dto/createUser.input';
+import { UpdateUserInput } from '@modules/users/dto/updateUser.input';
 import { UserNotFoundService } from '@shared/errors/userNotFound.service';
-import { NotFoundException } from '@nestjs/common';
+import { SharedService } from '@shared/shared.service';
 import { UsersRepository } from '@modules/users/users.repository';
 
 @Injectable()
-export class UsersService {
+export class UsersService extends SharedService<
+  User,
+  CreateUserInput,
+  UpdateUserInput
+> {
   constructor(
     private readonly userRepository: UsersRepository,
     private userNotFoundService: UserNotFoundService,
-  ) {}
+  ) {
+    super(userRepository);
+  }
 
   async existByUsername(username: string): Promise<boolean> {
     return this.userRepository.exists({ username });
   }
 
   async findByUsername(username: string): Promise<User> {
-    const user = await this.userRepository.findOne({
-      username,
-    });
+    const user = await this.userRepository.findByUsername(username);
     if (!user) {
       this.userNotFoundService.trigger(username);
     }
 
-    return user;
-  }
-
-  async findById(_id: string): Promise<User> {
-    const user = await this.userRepository.findById(_id);
-    if (!user) {
-      throw new NotFoundException();
-    }
-    return user;
-  }
-
-  async findAll(): Promise<User[]> {
-    return this.userRepository.findAll();
-  }
-
-  async create({ username, password }): Promise<User> {
-    const user = await this.userRepository.create({
-      username,
-      password,
-    });
     return user;
   }
 }
