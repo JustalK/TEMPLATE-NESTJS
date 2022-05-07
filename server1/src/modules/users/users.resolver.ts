@@ -15,6 +15,12 @@ export class UsersResolver {
     return this.usersService.findById(id);
   }
 
+  @UseGuards(JwtAuthGuard)
+  @Query(() => [User])
+  userFindAll(): Promise<User[]> {
+    return this.usersService.findAll();
+  }
+
   @Mutation(() => User)
   async userCreate(@Args('CreateUserInput') createUserInput: CreateUserInput) {
     return this.usersService.create(createUserInput);

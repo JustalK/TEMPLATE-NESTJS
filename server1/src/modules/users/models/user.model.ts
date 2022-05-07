@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose';
 import { MinLength, MaxLength } from 'class-validator';
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import * as bcrypt from 'bcrypt';
 
 @Schema()
 @ObjectType({ description: 'user' })
@@ -24,6 +25,12 @@ export class User {
 export const UserSchema = SchemaFactory.createForClass(User);
 
 import { UsersService } from '@modules/users/users.service';
+UserSchema.pre<any>('save', function (next) {
+  const { password } = this;
+  this.password = bcrypt.hashSync(password, 10);
+  next();
+});
+
 UserSchema.path('username').validate(async function (value: string) {
   try {
     const UserServices = new UsersService(this.model(User.name), null);
