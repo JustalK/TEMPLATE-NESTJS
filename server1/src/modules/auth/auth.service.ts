@@ -1,4 +1,5 @@
 import { Injectable, Inject, LoggerService } from '@nestjs/common';
+import * as bcrypt from 'bcrypt';
 import { UsersService } from '@modules/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
@@ -12,6 +13,10 @@ export class AuthService {
     private readonly logger: LoggerService,
   ) {}
 
+  async comparePassword(enteredPassword: string, foundPassword: string) {
+    return bcrypt.compare(enteredPassword, foundPassword);
+  }
+
   async login(username: string, pass: string): Promise<any> {
     this.logger.log(`Errors 2`, {
       __filename,
@@ -19,7 +24,7 @@ export class AuthService {
     });
 
     const user = await this.usersService.findByUsername(username);
-    if (user && user.password === pass) {
+    if (user && (await this.comparePassword(pass, user.password))) {
       return user;
     }
     return null;
