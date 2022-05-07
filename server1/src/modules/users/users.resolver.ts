@@ -1,11 +1,13 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { UseGuards } from '@nestjs/common';
+import { UseGuards, UseInterceptors } from '@nestjs/common';
 import { JwtAuthGuard } from '@modules/auth/guards/jwt-auth.guard';
 import { User } from '@modules/users/models/user.model';
 import { UsersService } from '@modules/users/users.service';
 import { CreateUserInput } from '@modules/users/dto/createUser.input';
+import MongooseClassSerializerInterceptor from '@shared/mongooseClassSerializer.interceptor';
 
 @Resolver(() => User)
+@UseInterceptors(MongooseClassSerializerInterceptor(User))
 export class UsersResolver {
   constructor(private readonly usersService: UsersService) {}
 
@@ -17,7 +19,7 @@ export class UsersResolver {
 
   @UseGuards(JwtAuthGuard)
   @Query(() => [User])
-  userFindAll(): Promise<User[]> {
+  async userFindAll(): Promise<User[]> {
     return this.usersService.findAll();
   }
 

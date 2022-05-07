@@ -11,7 +11,7 @@ type User {
   username: String!
 
   """Password of the user"""
-  password: String!
+  password: String
 }
 
 type ResultUnion {
@@ -22,7 +22,7 @@ type ResultUnion {
   username: String!
 
   """Password of the user"""
-  password: String!
+  password: String
 
   """The access token of the user"""
   access_token: String!

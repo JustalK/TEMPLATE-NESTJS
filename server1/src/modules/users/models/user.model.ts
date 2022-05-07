@@ -1,5 +1,6 @@
 import * as mongoose from 'mongoose';
 import { MinLength, MaxLength } from 'class-validator';
+import { Exclude } from 'class-transformer';
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as bcrypt from 'bcrypt';
@@ -16,9 +17,10 @@ export class User {
   username: string;
 
   @Prop({ required: true })
-  @Field(() => String, { description: 'Password of the user' })
+  @Field(() => String, { description: 'Password of the user', nullable: true })
   @MinLength(6)
   @MaxLength(50)
+  @Exclude()
   password: string;
 }
 

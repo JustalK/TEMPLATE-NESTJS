@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { User } from '@modules/users/models/user.model';
-import { UserNotFoundService } from '@src/shared/errors/userNotFound.service';
+import { UserNotFoundService } from '@shared/errors/userNotFound.service';
 import { NotFoundException } from '@nestjs/common';
 import { UsersRepository } from '@modules/users/users.repository';
 
