@@ -2,7 +2,6 @@ import * as mongoose from 'mongoose';
 import { MinLength, MaxLength } from 'class-validator';
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { RepositoryService } from '@src/shared/repository.service';
 
 @Schema()
 @ObjectType({ description: 'user' })
@@ -10,8 +9,9 @@ export class User {
   @Field(() => String, { description: 'ID of the user' })
   _id: mongoose.Schema.Types.ObjectId;
 
-  @Prop({ required: true })
+  @Prop({ required: true, unique: true })
   @Field(() => String, { description: 'Name of the user' })
+  @MaxLength(50)
   username: string;
 
   @Prop({ required: true })
@@ -23,12 +23,11 @@ export class User {
 
 export const UserSchema = SchemaFactory.createForClass(User);
 
+import { UsersService } from '@modules/users/users.service';
 UserSchema.path('username').validate(async function (value: string) {
   try {
-    const UserServices = new RepositoryService<User, never, never>(
-      this.model(User.name),
-    );
-    const rsl = await UserServices.exists({ username: value });
+    const UserServices = new UsersService(this.model(User.name), null);
+    const rsl = await UserServices.existByUsername(value);
     return !rsl;
   } catch (err) {
     console.log(err.stack);

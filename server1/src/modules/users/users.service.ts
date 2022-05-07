@@ -1,32 +1,44 @@
-import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { CreateUserInput } from '@modules/users/dto/createUser.input';
-import { UpdateUserInput } from '@modules/users/dto/updateUser.input';
 import { User } from '@modules/users/models/user.model';
-import { RepositoryService } from '@src/shared/repository.service';
 import { UserNotFoundService } from '@src/shared/errors/userNotFound.service';
+import { NotFoundException } from '@nestjs/common';
+import { UsersRepository } from '@modules/users/users.repository';
 
 @Injectable()
-export class UsersService extends RepositoryService<
-  User,
-  CreateUserInput,
-  UpdateUserInput
-> {
+export class UsersService {
   constructor(
-    @InjectModel(User.name)
-    private readonly userModel: Model<User>,
+    private readonly userRepository: UsersRepository,
     private userNotFoundService: UserNotFoundService,
-  ) {
-    super(userModel);
+  ) {}
+
+  async existByUsername(username: string): Promise<boolean> {
+    return this.userRepository.exists({ username });
   }
 
   async findByUsername(username: string): Promise<User> {
-    const user = await this.findOne<{ username: string }>({ username });
+    const user = await this.userRepository.findOne({
+      username,
+    });
     if (!user) {
       this.userNotFoundService.trigger(username);
     }
 
+    return user;
+  }
+
+  async findById(_id: string): Promise<User> {
+    const user = await this.userRepository.findById(_id);
+    if (!user) {
+      throw new NotFoundException();
+    }
+    return user;
+  }
+
+  async create({ username, password }): Promise<User> {
+    const user = await this.userRepository.create({
+      username,
+      password,
+    });
     return user;
   }
 }

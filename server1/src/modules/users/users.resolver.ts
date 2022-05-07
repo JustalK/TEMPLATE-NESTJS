@@ -1,5 +1,5 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { NotFoundException, UseGuards } from '@nestjs/common';
+import { UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '@modules/auth/guards/jwt-auth.guard';
 import { User } from '@modules/users/models/user.model';
 import { UsersService } from '@modules/users/users.service';
@@ -10,13 +10,9 @@ export class UsersResolver {
   constructor(private readonly usersService: UsersService) {}
 
   @UseGuards(JwtAuthGuard)
-  @Query(() => [User])
-  async userFindAll(): Promise<User[]> {
-    const user = await this.usersService.findAll();
-    if (!user) {
-      throw new NotFoundException();
-    }
-    return user;
+  @Query(() => User)
+  userFindById(id: string): Promise<User> {
+    return this.usersService.findById(id);
   }
 
   @Mutation(() => User)
