@@ -1,9 +1,14 @@
 import * as mongoose from 'mongoose';
+import * as bcrypt from 'bcrypt';
 import { MinLength, MaxLength } from 'class-validator';
 import { Exclude } from 'class-transformer';
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import * as bcrypt from 'bcrypt';
+import {
+  MODEL_LIMIT_STRING,
+  MODEL_LIMIT_PASSWORD,
+  BCRYPT_SALT,
+} from '@shared/constants/number';
 
 @Schema()
 @ObjectType({ description: 'user' })
@@ -13,13 +18,13 @@ export class User {
 
   @Prop({ required: true, unique: true })
   @Field(() => String, { description: 'Name of the user' })
-  @MaxLength(50)
+  @MaxLength(MODEL_LIMIT_STRING)
   username: string;
 
   @Prop({ required: true })
   @Field(() => String, { description: 'Password of the user', nullable: true })
-  @MinLength(6)
-  @MaxLength(50)
+  @MinLength(MODEL_LIMIT_PASSWORD)
+  @MaxLength(MODEL_LIMIT_STRING)
   @Exclude()
   password: string;
 }
@@ -29,7 +34,7 @@ export const UserSchema = SchemaFactory.createForClass(User);
 import { UsersService } from '@modules/users/users.service';
 UserSchema.pre<any>('save', function (next) {
   const { password } = this;
-  this.password = bcrypt.hashSync(password, 10);
+  this.password = bcrypt.hashSync(password, BCRYPT_SALT);
   next();
 });
 

@@ -23,6 +23,7 @@ export class UsersResolver {
     return this.usersService.findAll();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Mutation(() => User)
   async userCreate(@Args('CreateUserInput') createUserInput: CreateUserInput) {
     return this.usersService.create(createUserInput);
