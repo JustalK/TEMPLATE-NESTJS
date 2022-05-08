@@ -1,10 +1,11 @@
-import { Args, Mutation, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Resolver, Query } from '@nestjs/graphql';
 import { User } from '@modules/users/models/user.model';
 import { Payload } from '@modules/auth/models/payload.model';
 import { AuthService } from '@modules/auth/auth.service';
 import { LoginArgs } from '@modules/auth/dto/login.args';
 import { SigningArgs } from '@modules/auth/dto/signing.args';
 import { RefreshArgs } from '@modules/auth/dto/refresh.args';
+import { Public } from '@modules/auth/decorators/public.decorator';
 
 import { ObjectType, IntersectionType } from '@nestjs/graphql';
 @ObjectType()
@@ -18,6 +19,7 @@ export class AuthResolver {
     name: 'login',
     description: 'Allow an user to connect to the app',
   })
+  @Public()
   async login(@Args() loginArgs: LoginArgs) {
     const { _doc: user } = await this.authService.login(
       loginArgs.username,
@@ -47,12 +49,11 @@ export class AuthResolver {
     };
   }
 
-  @Mutation(() => ResultUnion, {
+  @Query(() => ResultUnion, {
     name: 'refresh',
     description: 'When given a valid refresh token, return a new access token',
   })
   async refresh(@Args() refreshArgs: RefreshArgs) {
-    console.log(refreshArgs);
-    return null;
+    return this.authService.refresh(refreshArgs.refresh_token);
   }
 }

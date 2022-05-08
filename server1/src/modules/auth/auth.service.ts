@@ -49,6 +49,19 @@ export class AuthService {
     };
   }
 
+  decode(token: string): any {
+    return this.jwtService.verify(token);
+  }
+
+  async refresh(token: string): Promise<any> {
+    const { refreshToken, username } = this.decode(token);
+    if (refreshToken) {
+      const user = await this.usersService.findByUsername(username);
+      return this.createPayload(user);
+    }
+    return null;
+  }
+
   async signing(username: string, password: string): Promise<any> {
     const user = await this.usersService.create({
       username,

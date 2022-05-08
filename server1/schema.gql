@@ -32,6 +32,8 @@ type ResultUnion {
 }
 
 type Query {
+  """When given a valid refresh token, return a new access token"""
+  refresh(refresh_token: String!): ResultUnion!
   userFindById: User!
   userFindAll: [User!]!
 }
@@ -42,9 +44,6 @@ type Mutation {
 
   """Create a new account and return a refresh token and an access token"""
   signing(username: String!, password: String!): ResultUnion!
-
-  """When given a valid refresh token, return a new access token"""
-  refresh(refresh_token: String!): ResultUnion!
   userCreate(CreateUserInput: CreateUserInput!): User!
 }
 

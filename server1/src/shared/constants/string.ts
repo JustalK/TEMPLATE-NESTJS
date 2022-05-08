@@ -53,3 +53,9 @@ export const NUMERIC = 'numeric';
  * @default
  * */
 export const DIGIT_TWO = '2-digit';
+/**
+ * The Key to pass to the call for aknowledging a key is public
+ * @constant
+ * @default
+ * */
+export const IS_PUBLIC_KEY = 'isPublic';

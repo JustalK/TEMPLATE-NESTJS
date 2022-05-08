@@ -12,6 +12,8 @@ import { WinstonModule } from 'nest-winston';
 import { WinstonOptionService } from '@shared/configs/services/winston-option.service';
 import { UsersModule } from '@modules/users/users.module';
 import { AuthModule } from '@modules/auth/auth.module';
+import { JwtAuthGuard } from '@modules/auth/guards/jwt-auth.guard';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -38,6 +40,12 @@ import { AuthModule } from '@modules/auth/auth.module';
     UsersModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
+  ],
 })
 export class AppModule {}
