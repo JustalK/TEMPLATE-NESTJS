@@ -4,6 +4,7 @@ import { Payload } from '@modules/auth/models/payload.model';
 import { AuthService } from '@modules/auth/auth.service';
 import { LoginArgs } from '@modules/auth/dto/login.args';
 import { SigningArgs } from '@modules/auth/dto/signing.args';
+import { RefreshArgs } from '@modules/auth/dto/refresh.args';
 
 import { ObjectType, IntersectionType } from '@nestjs/graphql';
 @ObjectType()
@@ -31,7 +32,8 @@ export class AuthResolver {
 
   @Mutation(() => ResultUnion, {
     name: 'signing',
-    description: 'Allow a visitor to register to the app',
+    description:
+      'Create a new account and return a refresh token and an access token',
   })
   async signing(@Args() signingArgs: SigningArgs) {
     const { _doc: user } = await this.authService.signing(
@@ -43,5 +45,14 @@ export class AuthResolver {
       ...user,
       ...payload,
     };
+  }
+
+  @Mutation(() => ResultUnion, {
+    name: 'refresh',
+    description: 'When given a valid refresh token, return a new access token',
+  })
+  async refresh(@Args() refreshArgs: RefreshArgs) {
+    console.log(refreshArgs);
+    return null;
   }
 }

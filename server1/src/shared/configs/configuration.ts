@@ -4,5 +4,8 @@ export default () => ({
       secret: 'test',
       expiresIn: '1h',
     },
+    refreshToken: {
+      expiresIn: '24h',
+    },
   },
 });

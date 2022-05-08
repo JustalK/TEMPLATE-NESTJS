@@ -26,6 +26,9 @@ type ResultUnion {
 
   """The access token of the user"""
   access_token: String!
+
+  """The refresh token of the app"""
+  refresh_token: String!
 }
 
 type Query {
@@ -37,8 +40,11 @@ type Mutation {
   """Allow an user to connect to the app"""
   login(username: String!, password: String!): ResultUnion!
 
-  """Allow a visitor to register to the app"""
+  """Create a new account and return a refresh token and an access token"""
   signing(username: String!, password: String!): ResultUnion!
+
+  """When given a valid refresh token, return a new access token"""
+  refresh(refresh_token: String!): ResultUnion!
   userCreate(CreateUserInput: CreateUserInput!): User!
 }
 
