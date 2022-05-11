@@ -10,7 +10,7 @@ export class RepositoryService<M, CreateInput, UpdateInput> {
 
   /**
    * Create the default options for encoding data
-   * @param data The data for creating our model
+   * @param data The data for creating our document
    * @return The created document
    * */
   async create(data: CreateInput): Promise<M> {
@@ -19,8 +19,8 @@ export class RepositoryService<M, CreateInput, UpdateInput> {
   }
 
   /**
-   * Update the data of an element found by his id
-   * @param _id The id of the element to update
+   * Update the data of an document found by his id
+   * @param _id The id of the document to update
    * @param data The new data to update with
    * @return The updated document
    * */
@@ -29,8 +29,8 @@ export class RepositoryService<M, CreateInput, UpdateInput> {
   }
 
   /**
-   * Return one element by some conditions
-   * @param find The condition to find the element
+   * Return one document by some conditions
+   * @param find The condition to find the document
    * @return The found document
    * */
   async findOne<V>(find: V): Promise<M> {
