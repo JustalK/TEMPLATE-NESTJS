@@ -7,6 +7,9 @@ import { User, UserSchema } from '@modules/users/models/user.model';
 import { UserNotFoundService } from '@shared/errors/userNotFound.service';
 import { UsernameAlreadyUsedService } from '@shared/errors/usernameAlreadyUsed.service';
 
+/**
+ * The dependencies of the user module.
+ */
 @Module({
   imports: [
     MongooseModule.forFeature([

@@ -1,3 +1,6 @@
+/**
+ * Regroup all the configuration variable of the app
+ */
 export default () => ({
   auth: {
     bearerToken: {
