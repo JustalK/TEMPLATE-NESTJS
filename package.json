@@ -9,7 +9,9 @@
     "node-redis-pubsub": "^5.0.0",
     "redis": "^4.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@nestjs/testing": "^8.4.4"
+  },
   "scripts": {
     "start": "docker-compose --env-file ./env/dev.env up -d --build",
     "start:prod": "docker-compose --env-file ./env/prod.env up -d --build --scale server1=2",
