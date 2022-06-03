@@ -1,5 +1,5 @@
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { AppController } from '@src/app.controller';
+import { AppService } from '@src/app.service';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 
 describe('AppController', () => {
@@ -10,7 +10,6 @@ describe('AppController', () => {
   beforeAll(async () => {
     mongod = await MongoMemoryServer.create();
     const uri = mongod.getUri();
-    console.log(uri);
   });
 
   afterAll(async () => {

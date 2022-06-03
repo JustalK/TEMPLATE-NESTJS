@@ -89,7 +89,8 @@
       "json",
       "ts"
     ],
-    "rootDir": "src",
+    "rootDir": "./",
+    "roots": ["<rootDir>/src/", "<rootDir>/test/"],
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
@@ -100,10 +101,10 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
     "moduleNameMapper": {
-      "@src(.*)$": "<rootDir>/$1",
-      "@interfaces(.*)$": "<rootDir>/src/$1",
-      "@shared(.*)$": "<rootDir>/src/$1",
-      "@modules(.*)$": "<rootDir>/src/$1"
+      "@src(.*)$": "<rootDir>/src/$1",
+      "@interfaces(.*)$": "<rootDir>/src/interfaces/$1",
+      "@shared(.*)$": "<rootDir>/src/shared/$1",
+      "@modules(.*)$": "<rootDir>/src/modules/$1"
     }
   },
   "_moduleAliases": {
