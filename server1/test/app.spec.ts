@@ -1,19 +1,32 @@
 import { AppController } from '@src/app.controller';
 import { AppService } from '@src/app.service';
 import { MongoMemoryServer } from 'mongodb-memory-server';
+import mongoose from 'mongoose';
+import { User, UserSchema } from '@modules/users/models/user.model';
 
 describe('AppController', () => {
   let appController: AppController;
   let appService: AppService;
-  let mongod;
+  let mongoServer;
 
   beforeAll(async () => {
-    mongod = await MongoMemoryServer.create();
-    const uri = mongod.getUri();
+    mongoServer = await MongoMemoryServer.create();
+    const uri = mongoServer.getUri();
+    console.log(uri);
+    await mongoose.connect(mongoServer.getUri(), { dbName: 'verifyMASTER' });
+    const UserModel = mongoose.model(User.name, UserSchema);
+    const t = await UserModel.create(
+      new UserModel({
+        username: 'azeaeaea',
+        password: 'azeaeaeaez',
+      }),
+    );
+    console.log(t);
   });
 
   afterAll(async () => {
-    await mongod.stop();
+    await mongoose.connection.close();
+    await mongoServer.stop();
   });
 
   beforeEach(() => {
