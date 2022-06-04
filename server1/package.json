@@ -101,6 +101,7 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
     "moduleNameMapper": {
+      "@test(.*)$": "<rootDir>/test/$1",
       "@src(.*)$": "<rootDir>/src/$1",
       "@interfaces(.*)$": "<rootDir>/src/interfaces/$1",
       "@shared(.*)$": "<rootDir>/src/shared/$1",
@@ -110,6 +111,7 @@
   "_moduleAliases": {
     "@root": ".",
     "@src": "./src",
+    "@test": "./test",
     "@interfaces": "./src/interfaces",
     "@shared": "./src/shared",
     "@modules": "./src/modules"
