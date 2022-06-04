@@ -28,6 +28,17 @@ describe('AppController', () => {
         status: 'working',
         environment: 'dev',
       };
+
+      const t = await testService.query({
+        query: `
+          mutation {
+            login(username: "justalk", password: "ezc186by") {
+              username
+              access_token
+            }
+          }`,
+      });
+
       jest.spyOn(appService, 'getStatus').mockImplementation(() => result);
 
       expect(appController.getStatusApi()).toBe(result);
