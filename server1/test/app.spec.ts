@@ -2,7 +2,8 @@ import { AppController } from '@src/app.controller';
 import { AppService } from '@src/app.service';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
-import { User, UserSchema } from '@modules/users/models/user.model';
+import { UserModel } from '@modules/users/models/user.model';
+import { UsersRepository } from '@modules/users/users.repository';
 
 describe('AppController', () => {
   let appController: AppController;
@@ -12,10 +13,9 @@ describe('AppController', () => {
   beforeAll(async () => {
     mongoServer = await MongoMemoryServer.create();
     const uri = mongoServer.getUri();
-    console.log(uri);
     await mongoose.connect(mongoServer.getUri(), { dbName: 'verifyMASTER' });
-    const UserModel = mongoose.model(User.name, UserSchema);
-    const t = await UserModel.create(
+    const userRepository = new UsersRepository(UserModel);
+    const t = await userRepository.create(
       new UserModel({
         username: 'azeaeaea',
         password: 'azeaeaeaez',

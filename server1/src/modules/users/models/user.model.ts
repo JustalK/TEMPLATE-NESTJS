@@ -1,4 +1,4 @@
-import * as mongoose from 'mongoose';
+import mongoose from 'mongoose';
 import * as bcrypt from 'bcrypt';
 import { MinLength, MaxLength } from 'class-validator';
 import { Exclude } from 'class-transformer';
@@ -30,6 +30,7 @@ export class User {
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
+export const UserModel = mongoose.model<User>(User.name, UserSchema);
 
 import { UsersService } from '@modules/users/users.service';
 UserSchema.pre<any>('save', function (next) {
