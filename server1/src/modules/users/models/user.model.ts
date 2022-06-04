@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import * as bcrypt from 'bcrypt';
+import { Mock } from 'mockingbird';
 import { MinLength, MaxLength } from 'class-validator';
 import { Exclude } from 'class-transformer';
 import { Field, ObjectType } from '@nestjs/graphql';
@@ -19,6 +20,7 @@ export class User {
   @Prop({ required: true, unique: true })
   @Field(() => String, { description: 'Name of the user' })
   @MaxLength(MODEL_LIMIT_STRING)
+  @Mock((faker) => faker.name.firstName())
   username: string;
 
   @Prop({ required: true })
@@ -26,6 +28,7 @@ export class User {
   @MinLength(MODEL_LIMIT_PASSWORD)
   @MaxLength(MODEL_LIMIT_STRING)
   @Exclude()
+  @Mock(bcrypt.hashSync('test', BCRYPT_SALT))
   password: string;
 }
 

@@ -75,6 +75,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "jest": "^27.0.6",
+    "mockingbird": "^2.1.2",
     "prettier": "^2.3.2",
     "supertest": "^6.1.3",
     "ts-jest": "^27.1.4",
@@ -90,7 +91,10 @@
       "ts"
     ],
     "rootDir": "./",
-    "roots": ["<rootDir>/src/", "<rootDir>/test/"],
+    "roots": [
+      "<rootDir>/src/",
+      "<rootDir>/test/"
+    ],
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"

@@ -1,6 +1,7 @@
 import { ServerService } from '@test/libs/server.service';
-import { UserModel } from '@modules/users/models/user.model';
+import { UserModel, User } from '@modules/users/models/user.model';
 import { UsersRepository } from '@modules/users/users.repository';
+import { MockFactory } from 'mockingbird';
 
 /**
  * Primary business layer
@@ -20,12 +21,8 @@ export class TestService {
   }
 
   async seed() {
-    const t = await this.usersRepository.create(
-      new UserModel({
-        username: 'azeaeaea',
-        password: 'azeaeaeaez',
-      }),
-    );
+    const oneBird = MockFactory<User>(User).one();
+    const t = await this.usersRepository.create(oneBird);
     console.log(t);
   }
 
