@@ -1,4 +1,3 @@
-import { ServerService } from '@test/libs/server.service';
 import { UserModel, User } from '@modules/users/models/user.model';
 import { UsersRepository } from '@modules/users/users.repository';
 import { MockFactory } from 'mockingbird';

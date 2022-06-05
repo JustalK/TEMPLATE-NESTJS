@@ -2,11 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AppModule } from '@src/app.module';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { MongooseModule, getConnectionToken } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { UserModel, User } from '@modules/users/models/user.model';
-import { ServerService } from '@test/libs/server.service';
-import { UsersRepository } from '@modules/users/users.repository';
-import { MockFactory } from 'mockingbird';
 import request from 'supertest-graphql';
 import gql from 'graphql-tag';
 
@@ -20,7 +15,6 @@ export class AppService {
   app;
   dbConnection;
   uri: string;
-  usersRepository: UsersRepository;
 
   async start() {
     this.moduleFixture = await Test.createTestingModule({
@@ -39,23 +33,7 @@ export class AppService {
     this.app = this.moduleFixture.createNestApplication();
     this.dbConnection = await this.moduleFixture.get(getConnectionToken());
 
-    this.usersRepository =
-      this.moduleFixture.get<UsersRepository>(UsersRepository);
-
     await this.app.init();
-  }
-
-  async seed() {
-    // Create one random user based on the schema
-    const oneUser = MockFactory<User>(User).one();
-    await this.usersRepository.create(oneUser);
-    // Create one decided user from scratch
-    await this.usersRepository.create(
-      new UserModel({
-        username: 'justalk',
-        password: 'ezc186by',
-      }),
-    );
   }
 
   async query(query: { query: string }, bearer = null) {
