@@ -15,11 +15,18 @@ import { AuthModule } from '@modules/auth/auth.module';
 import { JwtAuthGuard } from '@modules/auth/guards/jwt-auth.guard';
 import { APP_GUARD } from '@nestjs/core';
 
-@Module({
-  imports: [
+let conditionalModules = [];
+if (process.env.NODE_ENV !== 'test') {
+  conditionalModules = [
     MongooseModule.forRoot(
       `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@mongodb:${process.env.MONGO_PORT}/${process.env.MONGO_INITDB_DATABASE}?authSource=admin`,
     ),
+  ];
+}
+
+@Module({
+  imports: [
+    ...conditionalModules,
     ConfigModule.forRoot({
       load: [configuration],
       isGlobal: true,

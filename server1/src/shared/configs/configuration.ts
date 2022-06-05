@@ -11,4 +11,10 @@ export default () => ({
       expiresIn: '24h',
     },
   },
+  mongodb: {
+    uri:
+      process.env.MONGODB_URI ||
+      `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@mongodb:${process.env.MONGO_PORT}/${process.env.MONGO_INITDB_DATABASE}?authSource=admin`,
+    connectionName: process.env.MONGODB_CONNECTION || 'justalk',
+  },
 });
