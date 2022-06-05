@@ -1,5 +1,6 @@
 import { AppService } from '@test/libs/app.service';
 import { SeederService } from '@test/libs/seeder.service';
+import { MUTATION_LOGIN } from '@test/libs/mutations/auth';
 
 describe('AppController', () => {
   let appService: AppService;
@@ -16,29 +17,14 @@ describe('AppController', () => {
     await appService.stop();
   });
 
-  beforeEach(() => {
-    //appService = new AppService();
-  });
-
   describe('getStatus', () => {
-    it('should return the status of the app', async () => {
-      /**
-      const result = {
-        status: 'working',
-        environment: 'dev',
-      };
-      **/
-      const result = await appService.query({
-        query: `
-          mutation {
-            login(username: "justalk", password: "ezc186by") {
-              username
-              access_token
-            }
-          }`,
+    it('[PUBLIC] Login with an existing user account using username and password', async () => {
+      const result = await appService.query(MUTATION_LOGIN, {
+        username: 'justalk',
+        password: 'ezc186by',
       });
-
-      expect(true).toBe(true);
+      const { data }: any = result;
+      expect(data.login.username).toBe('justalk');
     });
   });
 });

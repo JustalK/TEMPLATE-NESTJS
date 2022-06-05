@@ -1,9 +1,10 @@
+import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppModule } from '@src/app.module';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { MongooseModule, getConnectionToken } from '@nestjs/mongoose';
 import request from 'supertest-graphql';
-import gql from 'graphql-tag';
+import { DocumentNode } from 'graphql';
 
 /**
  * Primary business layer
@@ -12,8 +13,8 @@ import gql from 'graphql-tag';
 export class AppService {
   mongoServer: MongoMemoryServer;
   moduleFixture: TestingModule;
-  app;
-  dbConnection;
+  app: INestApplication;
+  dbConnection: TestingModule;
   uri: string;
 
   async start() {
@@ -36,15 +37,8 @@ export class AppService {
     await this.app.init();
   }
 
-  async query(query: { query: string }, bearer = null) {
-    return request(this.app.getHttpServer()).mutate(gql`
-      mutation {
-        login(username: "justalk", password: "ezc186by") {
-          username
-          access_token
-        }
-      }
-    `);
+  async query(query: DocumentNode, variables) {
+    return request(this.app.getHttpServer()).mutate(query).variables(variables);
   }
 
   async stop() {

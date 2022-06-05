@@ -9,6 +9,7 @@ import { MockFactory } from 'mockingbird';
  */
 export class SeederService {
   usersRepository: UsersRepository;
+
   constructor(private readonly moduleFixture: TestingModule) {
     this.usersRepository = moduleFixture.get<UsersRepository>(UsersRepository);
   }
