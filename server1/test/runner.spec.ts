@@ -1,3 +1,5 @@
-import { authTest } from '@test/cases/auth.case';
+import loginCases from '@test/cases/login.case';
+import signingCases from '@test/cases/signing.case';
 
-authTest();
+loginCases();
+signingCases();

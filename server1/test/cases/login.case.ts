@@ -1,7 +1,7 @@
 import { AppService } from '@test/libs/app.service';
 import { MUTATION_LOGIN } from '@test/mutations/auth';
 
-export const authTest = () => {
+const test = () => {
   let appService: AppService;
 
   beforeAll(async () => {
@@ -13,7 +13,7 @@ export const authTest = () => {
     await appService.stop();
   });
 
-  describe('[AUTH MODULE]', () => {
+  describe('[AUTH MODULE] Login', () => {
     it('[PUBLIC] Login to an existing user account using username and password', async () => {
       const result = await appService.query(MUTATION_LOGIN, {
         username: 'justalk',
@@ -40,3 +40,5 @@ export const authTest = () => {
     });
   });
 };
+
+export default test;

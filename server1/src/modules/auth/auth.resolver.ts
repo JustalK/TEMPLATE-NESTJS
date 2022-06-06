@@ -37,6 +37,7 @@ export class AuthResolver {
     description:
       'Create a new account and return a refresh token and an access token',
   })
+  @Public()
   async signing(@Args() signingArgs: SigningArgs) {
     const { _doc: user } = await this.authService.signing(
       signingArgs.username,

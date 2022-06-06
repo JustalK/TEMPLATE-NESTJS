@@ -4,6 +4,7 @@ import { UsersService } from '@modules/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { WrongPasswordService } from '@shared/errors/wrongPassword.service';
+import { User } from '@modules/users/models/user.model';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 
 @Injectable()
@@ -28,10 +29,14 @@ export class AuthService {
     });
 
     const user = await this.usersService.findByUsername(username);
+    return this.isPasswordBelongToUser(pass, user);
+  }
+
+  async isPasswordBelongToUser(pass: string, user: User) {
     if (await this.comparePassword(pass, user.password)) {
       return user;
     } else {
-      this.wrongPasswordService.trigger(username);
+      this.wrongPasswordService.trigger(user.username);
     }
   }
 
