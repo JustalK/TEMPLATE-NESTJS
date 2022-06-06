@@ -8,6 +8,7 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtConfigService } from '@shared/configs/services/jwt-config.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { WrongPasswordService } from '@shared/errors/wrongPassword.service';
 
 @Module({
   imports: [
@@ -19,7 +20,13 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
     }),
   ],
-  providers: [AuthResolver, AuthService, LocalStrategy, JwtStrategy],
+  providers: [
+    AuthResolver,
+    AuthService,
+    LocalStrategy,
+    JwtStrategy,
+    WrongPasswordService,
+  ],
   exports: [AuthService],
 })
 export class AuthModule {}

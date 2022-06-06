@@ -3,6 +3,7 @@ import * as bcrypt from 'bcrypt';
 import { UsersService } from '@modules/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
+import { WrongPasswordService } from '@shared/errors/wrongPassword.service';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 
 @Injectable()
@@ -13,6 +14,7 @@ export class AuthService {
     private jwtService: JwtService,
     @Inject(WINSTON_MODULE_NEST_PROVIDER)
     private readonly logger: LoggerService,
+    private wrongPasswordService: WrongPasswordService,
   ) {}
 
   async comparePassword(enteredPassword: string, foundPassword: string) {
@@ -26,10 +28,11 @@ export class AuthService {
     });
 
     const user = await this.usersService.findByUsername(username);
-    if (user && (await this.comparePassword(pass, user.password))) {
+    if (await this.comparePassword(pass, user.password)) {
       return user;
+    } else {
+      this.wrongPasswordService.trigger(username);
     }
-    return null;
   }
 
   async createPayload(user: any) {
