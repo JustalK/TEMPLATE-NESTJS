@@ -2,6 +2,7 @@ import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppModule } from '@src/app.module';
 import { MongoMemoryServer } from 'mongodb-memory-server';
+import { SeederService } from '@test/libs/seeder.service';
 import { MongooseModule, getConnectionToken } from '@nestjs/mongoose';
 import request from 'supertest-graphql';
 import { DocumentNode } from 'graphql';
@@ -17,7 +18,7 @@ export class AppService {
   dbConnection: TestingModule;
   uri: string;
 
-  async start() {
+  async init() {
     this.moduleFixture = await Test.createTestingModule({
       imports: [
         AppModule,
@@ -35,6 +36,12 @@ export class AppService {
     this.dbConnection = await this.moduleFixture.get(getConnectionToken());
 
     await this.app.init();
+  }
+
+  async start() {
+    await this.init();
+    const seederService = new SeederService(this.moduleFixture);
+    await seederService.seed();
   }
 
   async query(query: DocumentNode, variables) {

@@ -1,23 +1,19 @@
 import { AppService } from '@test/libs/app.service';
-import { SeederService } from '@test/libs/seeder.service';
-import { MUTATION_LOGIN } from '@test/libs/mutations/auth';
+import { MUTATION_LOGIN } from '@test/mutations/auth';
 
-describe('AppController', () => {
+export const authTest = () => {
   let appService: AppService;
-  let seederService: SeederService;
 
   beforeAll(async () => {
     appService = new AppService();
     await appService.start();
-    seederService = new SeederService(appService.moduleFixture);
-    await seederService.seed();
   });
 
   afterAll(async () => {
     await appService.stop();
   });
 
-  describe('getStatus', () => {
+  describe('[AUTH MODULE]', () => {
     it('[PUBLIC] Login with an existing user account using username and password', async () => {
       const result = await appService.query(MUTATION_LOGIN, {
         username: 'justalk',
@@ -27,4 +23,4 @@ describe('AppController', () => {
       expect(data.login.username).toBe('justalk');
     });
   });
-});
+};
