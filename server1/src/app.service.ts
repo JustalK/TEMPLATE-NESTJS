@@ -2,7 +2,7 @@
  * This file manage the endpoint for the app
  * */
 import { Injectable } from '@nestjs/common';
-import { StatusApp } from '@src/interfaces/app/status';
+import { StatusApp } from '@interfaces/app/status';
 
 /**
  * Service for managing endpoint of the app
