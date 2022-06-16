@@ -1,14 +1,18 @@
 import 'module-alias';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from '@src/app.module';
-import * as helmet from 'helmet';
-import * as csurf from 'csurf';
+import helmet from 'helmet';
+import csurf from 'csurf';
+import { NODE_ENV_PROD } from '@shared/constants/string';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  //app.use(helmet());
+  if (process.env.NODE_ENV !== NODE_ENV_PROD) {
+    app.use(helmet());
+    app.use(csurf());
+  }
+
   app.enableCors();
-  //app.use(csurf());
   await app.listen(3000);
 }
 bootstrap();

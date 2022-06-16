@@ -8,8 +8,8 @@ import request from 'supertest-graphql';
 import { DocumentNode } from 'graphql';
 
 /**
- * Primary business layer
- * The service abstract class for managing the same fonction shared by whole service
+ * The App testing service
+ * Define how to start, stop and manage the testing server
  */
 export class AppService {
   mongoServer: MongoMemoryServer;
@@ -18,6 +18,18 @@ export class AppService {
   dbConnection: TestingModule;
   uri: string;
 
+  /**
+   * Start the testing server and seed it
+   */
+  async start() {
+    await this.init();
+    const seederService = new SeederService(this.moduleFixture);
+    await seederService.seed();
+  }
+
+  /**
+   * Initialize the testing server with the right informaton
+   */
   async init() {
     this.moduleFixture = await Test.createTestingModule({
       imports: [
@@ -38,16 +50,19 @@ export class AppService {
     await this.app.init();
   }
 
-  async start() {
-    await this.init();
-    const seederService = new SeederService(this.moduleFixture);
-    await seederService.seed();
-  }
-
+  /**
+   * Execute request against the testing server
+   * @param query The query gql to execute
+   * @param variables The variables to pass to the query
+   * @return The result of the call
+   */
   async query(query: DocumentNode, variables) {
     return request(this.app.getHttpServer()).mutate(query).variables(variables);
   }
 
+  /**
+   * Stop the testing server and remove all active connection
+   */
   async stop() {
     await this.dbConnection.close();
     await this.mongoServer.stop();

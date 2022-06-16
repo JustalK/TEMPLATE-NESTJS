@@ -21,7 +21,7 @@ export class UsersRepository extends RepositoryService<
    */
   constructor(
     @InjectModel(User.name)
-    private readonly userModel: Model<User>,
+    readonly userModel: Model<User>,
   ) {
     super(userModel);
   }

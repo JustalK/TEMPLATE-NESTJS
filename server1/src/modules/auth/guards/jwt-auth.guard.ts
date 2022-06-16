@@ -6,8 +6,16 @@ import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-hos
 import { AuthService } from '@modules/auth/auth.service';
 import { IS_PUBLIC_KEY } from '@shared/constants/string';
 
+/**
+ * This file manage the authorization and check the JWT passed in the header
+ * */
 @Injectable()
 export class JwtAuthGuard extends AuthGuard('jwt') {
+  /**
+   * Build the guard managing the JWT and authentication
+   * @param authService The Auth Service for managing the token
+   * @param reflector The reflector for getting the header of the request
+   * */
   constructor(
     @Inject(AuthService) private authService: AuthService,
     private reflector: Reflector,
@@ -15,6 +23,10 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
     super();
   }
 
+  /**
+   * Check the authorization for a particular endpoint
+   * @return True if the call is public, false if not authorized, The information of the user if the token is valid
+   * */
   canActivate(context: ExecutionContext) {
     const ctx = GqlExecutionContext.create(context);
 

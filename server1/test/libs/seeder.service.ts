@@ -4,16 +4,21 @@ import { UsersRepository } from '@modules/users/users.repository';
 import { MockFactory } from 'mockingbird';
 
 /**
- * Primary business layer
- * The service abstract class for managing the same fonction shared by whole service
+ * The seeder of the mongo memory server
  */
 export class SeederService {
   usersRepository: UsersRepository;
 
-  constructor(private readonly moduleFixture: TestingModule) {
+  /**
+   * Set the repositories for populating the database
+   */
+  constructor(readonly moduleFixture: TestingModule) {
     this.usersRepository = moduleFixture.get<UsersRepository>(UsersRepository);
   }
 
+  /**
+   * Seed the database with the information of this function
+   */
   async seed() {
     // Create one random user based on the schema
     const oneUser = MockFactory<User>(User).one();

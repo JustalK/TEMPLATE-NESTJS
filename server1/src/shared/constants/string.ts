@@ -1,4 +1,22 @@
 /**
+ * The development environment
+ * @constant
+ * @default
+ * */
+export const NODE_ENV_DEV = 'dev';
+/**
+ * The production environment
+ * @constant
+ * @default
+ * */
+export const NODE_ENV_PROD = 'prod';
+/**
+ * The testing environment
+ * @constant
+ * @default
+ * */
+export const NODE_ENV_TEST = 'test';
+/**
  * The local time of the app
  * @constant
  * @default

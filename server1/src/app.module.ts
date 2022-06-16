@@ -14,9 +14,10 @@ import { UsersModule } from '@modules/users/users.module';
 import { AuthModule } from '@modules/auth/auth.module';
 import { JwtAuthGuard } from '@modules/auth/guards/jwt-auth.guard';
 import { APP_GUARD } from '@nestjs/core';
+import { NODE_ENV_TEST } from '@shared/constants/string';
 
 let conditionalModules = [];
-if (process.env.NODE_ENV !== 'test') {
+if (process.env.NODE_ENV !== NODE_ENV_TEST) {
   conditionalModules = [
     MongooseModule.forRoot(
       `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@mongodb:${process.env.MONGO_PORT}/${process.env.MONGO_INITDB_DATABASE}?authSource=admin`,
