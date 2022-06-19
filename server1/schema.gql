@@ -33,21 +33,40 @@ type ResultUnion {
 
 type Query {
   """When given a valid refresh token, return a new access token"""
-  refresh(refresh_token: String!): ResultUnion!
+  refresh(
+    """The token for refreshing the Oauth token"""
+    refresh_token: String!
+  ): ResultUnion!
   userFindById: User!
   userFindAll: [User!]!
 }
 
 type Mutation {
   """Allow an user to connect to the app"""
-  login(username: String!, password: String!): ResultUnion!
+  login(
+    """Username of the user to login"""
+    username: String!
+
+    """Password of the user to login"""
+    password: String!
+  ): ResultUnion!
 
   """Create a new account and return a refresh token and an access token"""
-  signing(username: String!, password: String!): ResultUnion!
+  signing(
+    """The username of the person to signin"""
+    username: String!
+
+    """The password of the person to signin"""
+    password: String!
+  ): ResultUnion!
   userCreate(CreateUserInput: CreateUserInput!): User!
 }
 
+"""The inputs for creating a new user"""
 input CreateUserInput {
+  """The username of the new user"""
   username: String!
+
+  """The password of the new user"""
   password: String!
 }
