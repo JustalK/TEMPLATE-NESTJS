@@ -7,7 +7,7 @@ import { NODE_ENV_PROD } from '@shared/constants/string';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  if (process.env.NODE_ENV !== NODE_ENV_PROD) {
+  if (process.env.NODE_ENV === NODE_ENV_PROD) {
     app.use(helmet());
     app.use(csurf());
   }
