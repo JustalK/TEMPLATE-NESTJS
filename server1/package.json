@@ -81,6 +81,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "jest": "^27.0.6",
+    "loadtest": "^5.2.0",
     "mockingbird": "^2.1.2",
     "prettier": "^2.3.2",
     "supertest": "^6.2.3",
@@ -110,7 +111,12 @@
     ],
     "coverageDirectory": "../coverage",
     "collectCoverage": true,
-    "coverageReporters": ["json", "html", "lcov", "text"],
+    "coverageReporters": [
+      "json",
+      "html",
+      "lcov",
+      "text"
+    ],
     "testEnvironment": "node",
     "moduleNameMapper": {
       "@test(.*)$": "<rootDir>/test/$1",

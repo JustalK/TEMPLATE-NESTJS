@@ -5,6 +5,8 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 import { SeederService } from '@test/libs/seeder.service';
 import { MongooseModule, getConnectionToken } from '@nestjs/mongoose';
 import request from 'supertest-graphql';
+import requestHTTP from 'supertest';
+import loadtest from 'loadtest';
 import { DocumentNode } from 'graphql';
 
 /**
@@ -58,6 +60,31 @@ export class AppService {
    */
   async query(query: DocumentNode, variables) {
     return request(this.app.getHttpServer()).mutate(query).variables(variables);
+  }
+
+  async queryLoad(path = '') {
+    return new Promise((resolve, reject) => {
+      const options = {
+        url: 'http://api.server1.net',
+        maxRequests: 100,
+      };
+      loadtest.loadTest(options, function (error: any, result: any) {
+        if (error) {
+          return reject(error);
+        }
+        resolve(result);
+      });
+    });
+  }
+
+  /**
+   * Execute request against the testing server
+   * @param query The query gql to execute
+   * @param variables The variables to pass to the query
+   * @return The result of the call
+   */
+  async queryHTTP(path: string) {
+    return requestHTTP(this.app.getHttpServer()).get(path);
   }
 
   /**
