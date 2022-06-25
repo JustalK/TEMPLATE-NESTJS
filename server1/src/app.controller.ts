@@ -1,6 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from '@src/app.service';
 import { StatusApp } from '@interfaces/app/status';
+import { Public } from '@modules/auth/decorators/public.decorator';
 
 /**
  * Controller of the whole app
@@ -15,6 +16,7 @@ export class AppController {
    * @return The status of the app
    * */
   @Get()
+  @Public()
   getStatusApi(): StatusApp {
     return this.appService.getStatus();
   }
