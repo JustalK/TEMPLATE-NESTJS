@@ -6,6 +6,7 @@ import appCases from '@test/cases/app.case';
 import loginCases from '@test/cases/login.case';
 import signingCases from '@test/cases/signing.case';
 
+console.log(process.env.LOAD_TESTING);
 appCases();
 loginCases();
 signingCases();
