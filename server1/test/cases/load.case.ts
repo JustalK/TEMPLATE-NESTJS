@@ -5,18 +5,13 @@ const test = () => {
 
   beforeAll(async () => {
     appService = new AppService();
-    await appService.start();
-  });
-
-  afterAll(async () => {
-    await appService.stop();
   });
 
   describe('[APP MODULE] Status', () => {
     it.only('[PUBLIC] Login to an existing user account using username and password', async () => {
-      const result = await appService.queryLoad();
-      console.log(result);
-      expect(true).toBe(true);
+      const result = await appService.queryLoad('http://api.server1.net');
+      expect(result.totalRequests).toBe(100);
+      expect(result.totalErrors).toBe(0);
     });
   });
 };

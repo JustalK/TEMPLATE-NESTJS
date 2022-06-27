@@ -62,11 +62,17 @@ export class AppService {
     return request(this.app.getHttpServer()).mutate(query).variables(variables);
   }
 
-  async queryLoad(path = '') {
+  async queryLoad(
+    url = '',
+    maxRequests = 100,
+  ): Promise<{
+    totalRequests: number;
+    totalErrors: number;
+  }> {
     return new Promise((resolve, reject) => {
       const options = {
-        url: 'http://api.server1.net',
-        maxRequests: 100,
+        url,
+        maxRequests,
       };
       loadtest.loadTest(options, function (error: any, result: any) {
         if (error) {
