@@ -1,11 +1,22 @@
 config:
   target: "http://api.server1.net"
-  plugins:
-    expect: {}
-  phases:
-    - duration: 5
-      arrivalRate: 20
-      name: Warm up
+  environments:
+    load:
+      phases:
+        - duration: 3
+          arrivalRate: 5
+          name: "Phase 1"
+        - duration: 3
+          arrivalRate: 20
+          name: "Phase 2"
+    functional:
+      phases:
+        - duration: 5
+          arrivalRate: 1
+          name: "Functionnal"
+      plugins:
+        expect:
+          outputFormat: silent
 
 scenarios:
   - name: "[LOAD TEST] status"
@@ -24,6 +35,7 @@ scenarios:
                 signing(username: $username, password: $password) {
                   username
                   access_token
+                  refresh_token
                 }
               }
             variables:
@@ -34,6 +46,8 @@ scenarios:
             as: "username"
           expect:
             - statusCode: 200
+            - hasProperty: 'data.signing.access_token'
+            - hasProperty: 'data.signing.refresh_token'
       - post:
           url: "/graphql"
           json:
