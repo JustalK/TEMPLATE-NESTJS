@@ -7,9 +7,11 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { ThrottlerModule } from '@nestjs/throttler';
 import configuration from '@shared/configs/configuration';
 import { WinstonModule } from 'nest-winston';
 import { WinstonOptionService } from '@shared/configs/services/winston-option.service';
+import { ThrottlerConfigService } from '@shared/configs/services/throttler-config.service';
 import { UsersModule } from '@modules/users/users.module';
 import { AuthModule } from '@modules/auth/auth.module';
 import { JwtAuthGuard } from '@modules/auth/guards/jwt-auth.guard';
@@ -31,6 +33,10 @@ if (process.env.NODE_ENV !== NODE_ENV_TEST) {
     ConfigModule.forRoot({
       load: [configuration],
       isGlobal: true,
+    }),
+    ThrottlerModule.forRootAsync({
+      imports: [ConfigModule],
+      useClass: ThrottlerConfigService,
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,

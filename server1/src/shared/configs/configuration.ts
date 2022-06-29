@@ -2,6 +2,12 @@
  * Regroup all the configuration variable of the app
  */
 export default () => ({
+  application: {
+    rateLimit: {
+      ttl: parseInt(process.env.TTL_LIMIT, 10) || 100,
+      limit: parseInt(process.env.RATE_LIMIT, 10) || 50,
+    },
+  },
   auth: {
     bearerToken: {
       secret: 'test',
