@@ -62,18 +62,40 @@ export class AppService {
     return request(this.app.getHttpServer()).mutate(query).variables(variables);
   }
 
-  async queryLoad(
+  async queryLoad({
     path = '',
     maxRequests = 100,
-  ): Promise<{
+    method = null,
+    body = null,
+  }): Promise<{
     totalRequests: number;
     totalErrors: number;
   }> {
     return new Promise((resolve, reject) => {
-      const options = {
+      function statusCallback(error, result) {
+        console.log(error, result);
+      }
+
+      const options: {
+        url: string;
+        maxRequests: number;
+        method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+        body?: any;
+        statusCallback: any;
+        contentType: any;
+      } = {
         url: process.env.VIRTUAL_HOST + path,
         maxRequests,
+        method: method || 'GET',
+        statusCallback: statusCallback,
+        contentType: 'text/html; charset=utf-8',
       };
+
+      if (body) {
+        options.body = body;
+      }
+
+      console.log(options);
       loadtest.loadTest(options, function (error: any, result: any) {
         if (error) {
           return reject(error);
