@@ -4,11 +4,17 @@ config:
     expect: {}
   phases:
     - duration: 5
-      arrivalRate: 5
+      arrivalRate: 20
       name: Warm up
 
 scenarios:
-  - name: "Signing and login"
+  - name: "[LOAD TEST] status"
+    flow:
+      - get:
+          url: "/"
+          expect:
+            - statusCode: 200
+  - name: "[LOAD TEST] Signing and Login"
     flow:
       - post:
           url: "/graphql"

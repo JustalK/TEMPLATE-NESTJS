@@ -6,7 +6,6 @@ import { SeederService } from '@test/libs/seeder.service';
 import { MongooseModule, getConnectionToken } from '@nestjs/mongoose';
 import request from 'supertest-graphql';
 import requestHTTP from 'supertest';
-import loadtest from 'loadtest';
 import { DocumentNode } from 'graphql';
 
 /**
@@ -62,56 +61,13 @@ export class AppService {
     return request(this.app.getHttpServer()).mutate(query).variables(variables);
   }
 
-  async queryLoad({
-    path = '',
-    maxRequests = 100,
-    method = null,
-    body = null,
-  }): Promise<{
-    totalRequests: number;
-    totalErrors: number;
-  }> {
-    return new Promise((resolve, reject) => {
-      function statusCallback(error, result) {
-        console.log(error, result);
-      }
-
-      const options: {
-        url: string;
-        maxRequests: number;
-        method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
-        body?: any;
-        statusCallback: any;
-        contentType: any;
-      } = {
-        url: process.env.VIRTUAL_HOST + path,
-        maxRequests,
-        method: method || 'GET',
-        statusCallback: statusCallback,
-        contentType: 'text/html; charset=utf-8',
-      };
-
-      if (body) {
-        options.body = body;
-      }
-
-      console.log(options);
-      loadtest.loadTest(options, function (error: any, result: any) {
-        if (error) {
-          return reject(error);
-        }
-        resolve(result);
-      });
-    });
-  }
-
   /**
    * Execute request against the testing server
    * @param query The query gql to execute
    * @param variables The variables to pass to the query
    * @return The result of the call
    */
-  async queryHTTP(path: string) {
+  async queryHTTP(path = '') {
     return requestHTTP(this.app.getHttpServer()).get(path);
   }
 
