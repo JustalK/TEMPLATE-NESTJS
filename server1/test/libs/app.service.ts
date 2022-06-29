@@ -63,7 +63,7 @@ export class AppService {
   }
 
   async queryLoad(
-    url = '',
+    path = '',
     maxRequests = 100,
   ): Promise<{
     totalRequests: number;
@@ -71,7 +71,7 @@ export class AppService {
   }> {
     return new Promise((resolve, reject) => {
       const options = {
-        url,
+        url: process.env.VIRTUAL_HOST + path,
         maxRequests,
       };
       loadtest.loadTest(options, function (error: any, result: any) {

@@ -7,9 +7,9 @@ const test = () => {
     appService = new AppService();
   });
 
-  describe('[APP MODULE] Status', () => {
-    it.only('[PUBLIC] Login to an existing user account using username and password', async () => {
-      const result = await appService.queryLoad('http://api.server1.net');
+  describe('[LOAD TESTING] App', () => {
+    it.only('[PUBLIC] Testing the load of the status', async () => {
+      const result = await appService.queryLoad();
       expect(result.totalRequests).toBe(100);
       expect(result.totalErrors).toBe(0);
     });
