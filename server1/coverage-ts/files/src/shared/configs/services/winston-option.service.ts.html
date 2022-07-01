@@ -1,0 +1,139 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>winston-option.service.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/shared/configs/services/winston-option.service.ts</td><td class="">98.73%</td><td class="">90%</td><td class="">157</td><td class="">155</td><td class="">2</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import { Injectable } from &#x27;@nestjs/common&#x27;;
+import {
+  WinstonModuleOptions,
+  WinstonModuleOptionsFactory,
+} from &#x27;nest-winston/dist/winston.interfaces&#x27;;
+import * as CONSTANTS from &#x27;@shared/constants/string&#x27;;
+import * as winston from &#x27;winston&#x27;;
+import path from &#x27;path&#x27;;
+import colors from &#x27;colors&#x27;;
+
+/**
+ * Injectable service for managing the winston logger
+ */
+@Injectable()
+export class WinstonOptionService implements WinstonModuleOptionsFactory {
+  /**
+   * Transform the context to a simple filename format such as [filename]
+   * @param {Object} information The information object
+   * @param information.level The level of the error
+   * @param information.timestamp The timestamp when the error has been called
+   * @param information.filename The name where the log has been called
+   * @param information.message The error message
+   * @param information.prefixe The message before the message
+   * @param information.code The code message
+   * @param information.suffixe The message after the message
+   * @return The message wrapped in the right color
+   * */
+  prepareColorizedFormat(information: {
+    level: string;
+    timestamp: string;
+    filename: string;
+    message: string;
+    prefixe?: string;
+    code?: string;
+    suffixe?: string;
+  }): string {
+    const code = colors.blue(information.code || CONSTANTS.CODE);
+    const level = colors.green(information.level);
+    const time = colors.white(information.timestamp);
+    const prefixe = colors.green(information.prefixe || CONSTANTS.PREFIXE);
+    const filename = colors.yellow(information.filename);
+    const message = colors.green(information.message);
+    const suffixe = colors.yellow(information.suffixe || CONSTANTS.EMPTY);
+    return CONSTANTS.EMPTY.concat(
+      code,
+      CONSTANTS.SPACE,
+      level,
+      CONSTANTS.SPACE,
+      CONSTANTS.DASH,
+      time,
+      CONSTANTS.TAB,
+      CONSTANTS.SPACE,
+      prefixe,
+      CONSTANTS.SPACE,
+      filename,
+      CONSTANTS.SPACE,
+      message,
+      CONSTANTS.SPACE,
+      suffixe,
+    );
+  }
+
+  /**
+   * Transform a date to the same format as NestJS logger
+   * @param {Date} timestamp The time that we want to beautify like in nestJS
+   * @return {string} The new way to show the time in a beautify way
+   * */
+  prepareDateFormat(timestamp: Date): string {
+    return new Date(timestamp)
+      .toLocaleDateString(CONSTANTS.LOCAL_TIMESTAMP, {
+        year: CONSTANTS.NUMERIC,
+        month: CONSTANTS.DIGIT_TWO,
+        day: CONSTANTS.DIGIT_TWO,
+        hour12: true,
+        hour: CONSTANTS.NUMERIC,
+        minute: CONSTANTS.NUMERIC,
+        second: CONSTANTS.NUMERIC,
+      })
+      .toUpperCase();
+  }
+
+  /**
+   * Transform the context to a simple filename format such as [filename]
+   * @param {Object} context The context containing the metadata
+   * @param {string} context.__filename The path to the file
+   * @return {string} The filename wrapped between brackets
+   * */
+  prepareFilenameFormat(context: { __filename: string }): string {
+    return `[${path.basename(context.__filename)}]`;
+  }
+
+  /**
+   * Create the transports for the whole application
+   * @return {Object} The transport for winston
+   * */
+  createWinstonModuleOptions():
+    | Promise&lt;WinstonModuleOptions&gt;
+    | WinstonModuleOptions {
+    const nestLikeFormat = winston.format.printf(
+      ({ context, level, timestamp, message }) =&gt; {
+        return this.prepareColorizedFormat({
+          level,
+          timestamp: this.prepareDateFormat(timestamp),
+          filename: this.prepareFilenameFormat(context),
+          message,
+        });
+      },
+    );
+
+    return {
+      transports: [
+        new winston.transports.Console({
+          format: winston.format.combine(
+            winston.format.timestamp(),
+            nestLikeFormat,
+          ),
+        }),
+      ],
+    };
+  }
+}
+</textarea><pre id="annotations" style="display:none">[{&quot;file&quot;:&quot;src/shared/configs/services/winston-option.service.ts&quot;,&quot;line&quot;:99,&quot;character&quot;:9,&quot;text&quot;:&quot;context&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/shared/configs/services/winston-option.service.ts&quot;,&quot;line&quot;:99,&quot;character&quot;:25,&quot;text&quot;:&quot;timestamp&quot;,&quot;kind&quot;:1}]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Fri, 01 Jul 2022 19:28:46 GMT</p>
+    </body>
+  </html>
+  

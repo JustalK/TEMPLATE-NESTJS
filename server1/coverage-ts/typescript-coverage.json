@@ -1,0 +1,849 @@
+{
+  "fileCounts": {},
+  "anys": [
+    {
+      "file": "dist/app.controller.d.ts",
+      "line": 3,
+      "character": 21,
+      "text": "appService",
+      "kind": 1
+    },
+    {
+      "file": "src/shared/configs/services/winston-option.service.ts",
+      "line": 99,
+      "character": 9,
+      "text": "context",
+      "kind": 1
+    },
+    {
+      "file": "src/shared/configs/services/winston-option.service.ts",
+      "line": 99,
+      "character": 25,
+      "text": "timestamp",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/users/models/user.model.ts",
+      "line": 39,
+      "character": 10,
+      "text": "password",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/users/models/user.model.ts",
+      "line": 40,
+      "character": 2,
+      "text": "this",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/users/models/user.model.ts",
+      "line": 40,
+      "character": 7,
+      "text": "password",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/users/models/user.model.ts",
+      "line": 46,
+      "character": 42,
+      "text": "this",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/users/models/user.model.ts",
+      "line": 46,
+      "character": 47,
+      "text": "model",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/users/models/user.model.ts",
+      "line": 50,
+      "character": 16,
+      "text": "err",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/users/models/user.model.ts",
+      "line": 50,
+      "character": 20,
+      "text": "stack",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/users/models/user.model.ts",
+      "line": 49,
+      "character": 11,
+      "text": "err",
+      "kind": 1
+    },
+    {
+      "file": "src/shared/repository.service.ts",
+      "line": 16,
+      "character": 10,
+      "text": "obj",
+      "kind": 1
+    },
+    {
+      "file": "src/shared/repository.service.ts",
+      "line": 17,
+      "character": 11,
+      "text": "obj",
+      "kind": 1
+    },
+    {
+      "file": "src/shared/repository.service.ts",
+      "line": 17,
+      "character": 15,
+      "text": "save",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.service.ts",
+      "line": 42,
+      "character": 22,
+      "text": "user",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.service.ts",
+      "line": 43,
+      "character": 22,
+      "text": "username",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.service.ts",
+      "line": 43,
+      "character": 32,
+      "text": "user",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.service.ts",
+      "line": 43,
+      "character": 37,
+      "text": "username",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.service.ts",
+      "line": 43,
+      "character": 47,
+      "text": "sub",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.service.ts",
+      "line": 43,
+      "character": 52,
+      "text": "user",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.service.ts",
+      "line": 43,
+      "character": 57,
+      "text": "userId",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.service.ts",
+      "line": 46,
+      "character": 6,
+      "text": "username",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.service.ts",
+      "line": 46,
+      "character": 16,
+      "text": "user",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.service.ts",
+      "line": 46,
+      "character": 21,
+      "text": "username",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.service.ts",
+      "line": 47,
+      "character": 6,
+      "text": "sub",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.service.ts",
+      "line": 47,
+      "character": 11,
+      "text": "user",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.service.ts",
+      "line": 47,
+      "character": 16,
+      "text": "userId",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.service.ts",
+      "line": 64,
+      "character": 12,
+      "text": "refreshToken",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.service.ts",
+      "line": 64,
+      "character": 26,
+      "text": "username",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.service.ts",
+      "line": 65,
+      "character": 8,
+      "text": "refreshToken",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/strategies/local.strategy.ts",
+      "line": 26,
+      "character": 10,
+      "text": "user",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/strategies/local.strategy.ts",
+      "line": 27,
+      "character": 9,
+      "text": "user",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/strategies/local.strategy.ts",
+      "line": 30,
+      "character": 11,
+      "text": "user",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.resolver.ts",
+      "line": 23,
+      "character": 18,
+      "text": "user",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.resolver.ts",
+      "line": 27,
+      "character": 57,
+      "text": "user",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.resolver.ts",
+      "line": 29,
+      "character": 9,
+      "text": "user",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.resolver.ts",
+      "line": 41,
+      "character": 18,
+      "text": "user",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.resolver.ts",
+      "line": 45,
+      "character": 57,
+      "text": "user",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/auth.resolver.ts",
+      "line": 47,
+      "character": 9,
+      "text": "user",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/guards/jwt-auth.guard.ts",
+      "line": 42,
+      "character": 12,
+      "text": "req",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/guards/jwt-auth.guard.ts",
+      "line": 43,
+      "character": 10,
+      "text": "bearer",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/guards/jwt-auth.guard.ts",
+      "line": 43,
+      "character": 19,
+      "text": "req",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/guards/jwt-auth.guard.ts",
+      "line": 43,
+      "character": 23,
+      "text": "rawHeaders",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/guards/jwt-auth.guard.ts",
+      "line": 43,
+      "character": 34,
+      "text": "find",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/guards/jwt-auth.guard.ts",
+      "line": 44,
+      "character": 9,
+      "text": "bearer",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/guards/jwt-auth.guard.ts",
+      "line": 49,
+      "character": 10,
+      "text": "dec",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/guards/jwt-auth.guard.ts",
+      "line": 49,
+      "character": 40,
+      "text": "bearer",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/guards/jwt-auth.guard.ts",
+      "line": 49,
+      "character": 47,
+      "text": "split",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/guards/jwt-auth.guard.ts",
+      "line": 50,
+      "character": 8,
+      "text": "dec",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/guards/jwt-auth.guard.ts",
+      "line": 50,
+      "character": 12,
+      "text": "refreshToken",
+      "kind": 1
+    },
+    {
+      "file": "src/modules/auth/guards/jwt-auth.guard.ts",
+      "line": 54,
+      "character": 55,
+      "text": "req",
+      "kind": 1
+    },
+    {
+      "file": "src/app.module.ts",
+      "line": 45,
+      "character": 18,
+      "text": "req",
+      "kind": 1
+    },
+    {
+      "file": "src/app.module.ts",
+      "line": 45,
+      "character": 31,
+      "text": "req",
+      "kind": 1
+    },
+    {
+      "file": "test/libs/app.service.ts",
+      "line": 59,
+      "character": 35,
+      "text": "variables",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/app.case.ts",
+      "line": 17,
+      "character": 14,
+      "text": "status",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/app.case.ts",
+      "line": 17,
+      "character": 22,
+      "text": "environment",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/app.case.ts",
+      "line": 17,
+      "character": 45,
+      "text": "body",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/app.case.ts",
+      "line": 18,
+      "character": 13,
+      "text": "status",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/app.case.ts",
+      "line": 19,
+      "character": 13,
+      "text": "environment",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/login.case.ts",
+      "line": 21,
+      "character": 14,
+      "text": "data",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/login.case.ts",
+      "line": 22,
+      "character": 13,
+      "text": "data",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/login.case.ts",
+      "line": 22,
+      "character": 18,
+      "text": "login",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/login.case.ts",
+      "line": 22,
+      "character": 24,
+      "text": "username",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/login.case.ts",
+      "line": 29,
+      "character": 14,
+      "text": "errors",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/login.case.ts",
+      "line": 30,
+      "character": 13,
+      "text": "errors",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/login.case.ts",
+      "line": 30,
+      "character": 23,
+      "text": "message",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/login.case.ts",
+      "line": 37,
+      "character": 14,
+      "text": "errors",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/login.case.ts",
+      "line": 38,
+      "character": 13,
+      "text": "errors",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/login.case.ts",
+      "line": 38,
+      "character": 23,
+      "text": "message",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/signing.case.ts",
+      "line": 21,
+      "character": 14,
+      "text": "data",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/signing.case.ts",
+      "line": 22,
+      "character": 13,
+      "text": "data",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/signing.case.ts",
+      "line": 22,
+      "character": 18,
+      "text": "signing",
+      "kind": 1
+    },
+    {
+      "file": "test/cases/signing.case.ts",
+      "line": 22,
+      "character": 26,
+      "text": "username",
+      "kind": 1
+    },
+    {
+      "file": "dist/auth/auth.resolver.d.ts",
+      "line": 7,
+      "character": 21,
+      "text": "authService",
+      "kind": 1
+    },
+    {
+      "file": "dist/auth/auth.service.d.ts",
+      "line": 3,
+      "character": 21,
+      "text": "usersService",
+      "kind": 1
+    },
+    {
+      "file": "dist/auth/auth.service.d.ts",
+      "line": 4,
+      "character": 12,
+      "text": "jwtService",
+      "kind": 1
+    },
+    {
+      "file": "dist/auth/auth.service.d.ts",
+      "line": 7,
+      "character": 18,
+      "text": "user",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/model.service.d.ts",
+      "line": 2,
+      "character": 21,
+      "text": "model",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/repository.service.d.ts",
+      "line": 2,
+      "character": 21,
+      "text": "model",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/shared.service.d.ts",
+      "line": 2,
+      "character": 21,
+      "text": "repository",
+      "kind": 1
+    },
+    {
+      "file": "dist/users/users.resolver.d.ts",
+      "line": 4,
+      "character": 21,
+      "text": "usersService",
+      "kind": 1
+    },
+    {
+      "file": "dist/users/users.service.d.ts",
+      "line": 7,
+      "character": 21,
+      "text": "userModel",
+      "kind": 1
+    },
+    {
+      "file": "dist/users/users.service.d.ts",
+      "line": 8,
+      "character": 12,
+      "text": "userNotFoundService",
+      "kind": 1
+    },
+    {
+      "file": "dist/auth/strategies/jwt.strategy.d.ts",
+      "line": 4,
+      "character": 13,
+      "text": "payload",
+      "kind": 1
+    },
+    {
+      "file": "dist/auth/strategies/jwt.strategy.d.ts",
+      "line": 5,
+      "character": 8,
+      "text": "userId",
+      "kind": 1
+    },
+    {
+      "file": "dist/auth/strategies/jwt.strategy.d.ts",
+      "line": 6,
+      "character": 8,
+      "text": "username",
+      "kind": 1
+    },
+    {
+      "file": "dist/auth/strategies/local.strategy.d.ts",
+      "line": 4,
+      "character": 12,
+      "text": "authService",
+      "kind": 1
+    },
+    {
+      "file": "dist/interfaces/app/shared.d.ts",
+      "line": 1,
+      "character": 4,
+      "text": "findAll",
+      "kind": 1
+    },
+    {
+      "file": "dist/modules/auth/auth.resolver.d.ts",
+      "line": 10,
+      "character": 21,
+      "text": "authService",
+      "kind": 1
+    },
+    {
+      "file": "dist/modules/auth/auth.service.d.ts",
+      "line": 7,
+      "character": 21,
+      "text": "configService",
+      "kind": 1
+    },
+    {
+      "file": "dist/modules/auth/auth.service.d.ts",
+      "line": 8,
+      "character": 21,
+      "text": "usersService",
+      "kind": 1
+    },
+    {
+      "file": "dist/modules/auth/auth.service.d.ts",
+      "line": 9,
+      "character": 12,
+      "text": "jwtService",
+      "kind": 1
+    },
+    {
+      "file": "dist/modules/auth/auth.service.d.ts",
+      "line": 10,
+      "character": 21,
+      "text": "logger",
+      "kind": 1
+    },
+    {
+      "file": "dist/modules/auth/auth.service.d.ts",
+      "line": 11,
+      "character": 12,
+      "text": "wrongPasswordService",
+      "kind": 1
+    },
+    {
+      "file": "dist/modules/auth/auth.service.d.ts",
+      "line": 16,
+      "character": 18,
+      "text": "user",
+      "kind": 1
+    },
+    {
+      "file": "dist/modules/users/users.resolver.d.ts",
+      "line": 4,
+      "character": 21,
+      "text": "usersService",
+      "kind": 1
+    },
+    {
+      "file": "dist/modules/users/users.service.d.ts",
+      "line": 7,
+      "character": 21,
+      "text": "userRepository",
+      "kind": 1
+    },
+    {
+      "file": "dist/modules/users/users.service.d.ts",
+      "line": 8,
+      "character": 12,
+      "text": "userNotFoundService",
+      "kind": 1
+    },
+    {
+      "file": "dist/test/libs/app.service.d.ts",
+      "line": 13,
+      "character": 31,
+      "text": "variables",
+      "kind": 1
+    },
+    {
+      "file": "dist/modules/auth/guards/jwt-auth.guard.d.ts",
+      "line": 5,
+      "character": 12,
+      "text": "authService",
+      "kind": 1
+    },
+    {
+      "file": "dist/modules/auth/guards/jwt-auth.guard.d.ts",
+      "line": 6,
+      "character": 12,
+      "text": "reflector",
+      "kind": 1
+    },
+    {
+      "file": "dist/modules/auth/guards/jwt-config.service.d.ts",
+      "line": 3,
+      "character": 21,
+      "text": "configService",
+      "kind": 1
+    },
+    {
+      "file": "dist/modules/auth/guards/jwt-token.service.d.ts",
+      "line": 3,
+      "character": 21,
+      "text": "configService",
+      "kind": 1
+    },
+    {
+      "file": "dist/modules/auth/strategies/local.strategy.d.ts",
+      "line": 4,
+      "character": 12,
+      "text": "authService",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/configs/services/jwt-config.service.d.ts",
+      "line": 3,
+      "character": 21,
+      "text": "configService",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/configs/services/jwt-config0.service.d.ts",
+      "line": 3,
+      "character": 21,
+      "text": "configService",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/configs/services/jwt-config0.service.d.ts",
+      "line": 4,
+      "character": 21,
+      "text": "value",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/configs/services/jwt.service.d.ts",
+      "line": 3,
+      "character": 21,
+      "text": "configService",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/configs/services/jwt.service.d.ts",
+      "line": 4,
+      "character": 21,
+      "text": "value",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/configs/services/logger.service.d.ts",
+      "line": 3,
+      "character": 21,
+      "text": "configService",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/configs/services/logger.service.d.ts",
+      "line": 5,
+      "character": 10,
+      "text": "message",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/configs/services/logger.service.d.ts",
+      "line": 6,
+      "character": 10,
+      "text": "message",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/configs/services/logger.service.d.ts",
+      "line": 7,
+      "character": 9,
+      "text": "message",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/configs/services/logger.service.d.ts",
+      "line": 7,
+      "character": 23,
+      "text": "context",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/configs/services/logger.service.d.ts",
+      "line": 8,
+      "character": 8,
+      "text": "message",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/configs/services/logger.service.d.ts",
+      "line": 8,
+      "character": 22,
+      "text": "context",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/configs/services/logger.service.d.ts",
+      "line": 9,
+      "character": 9,
+      "text": "message",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/configs/services/mongoose-config.service.d.ts",
+      "line": 3,
+      "character": 21,
+      "text": "configService",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/configs/services/reset-jwt-config.service.d.ts",
+      "line": 3,
+      "character": 21,
+      "text": "configService",
+      "kind": 1
+    },
+    {
+      "file": "dist/shared/configs/services/throttler-config.service.d.ts",
+      "line": 3,
+      "character": 21,
+      "text": "configService",
+      "kind": 1
+    }
+  ],
+  "percentage": 94.78487614080835,
+  "total": 2301,
+  "covered": 2181,
+  "uncovered": 120
+}
