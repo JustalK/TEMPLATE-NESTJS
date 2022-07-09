@@ -1,3 +1,4 @@
+// @ts-nocheck
 const sonarqubeScanner =  require('sonarqube-scanner');
 
 sonarqubeScanner(
@@ -7,9 +8,10 @@ sonarqubeScanner(
             'sonar.login': 'admin',
             'sonar.password': 'test',
             'sonar.sources':  'src',
-            'sonar.tests':  'src',
-            'sonar.inclusions'  :  '**', // Entry point of your code
-            'sonar.test.inclusions':  'src/**/*.spec.js,src/**/*.spec.jsx,src/**/*.test.js,src/**/*.test.jsx',
+            'sonar.tests':  'test',
+            'sonar.inclusions'  :  '**',
+            'sonar.test.inclusions':  'test/**/*.spec.js,test/**/*.spec.ts',
+            'sonar.testExecutionReportPaths': 'test-report.xml',
             'sonar.javascript.lcov.reportPaths':  'coverage/lcov.info'
         }
     }, () => {});

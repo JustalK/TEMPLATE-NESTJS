@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="/home/justalk/Documents/Personal/TEMPLATES/TEMPLATE-NESTJS/server1/test/runner.spec.ts">
+    <testCase name="[LOAD TESTING] App [PUBLIC] Testing the load of the status" duration="19"/>
+    <testCase name="[AUTH MODULE] Login [PUBLIC] Login to an existing user account using username and password" duration="136"/>
+    <testCase name="[AUTH MODULE] Login [PUBLIC] Login to an existing user account using a wrong username and password" duration="45"/>
+    <testCase name="[AUTH MODULE] Login [PUBLIC] Login to an existing user account using a username and a wrong password" duration="86"/>
+    <testCase name="[AUTH MODULE] Signing [PUBLIC] Signing with an username and a password" duration="91"/>
+    <testCase name="[AUTH MODULE] Signing [PUBLIC] Signing with an username already taken by someone" duration="12"/>
+    <testCase name="[AUTH MODULE] Signing [PUBLIC] Signing with no username and password" duration="7"/>
+  </file>
+</testExecutions>
