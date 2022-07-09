@@ -35,7 +35,11 @@ services:
     networks:
       kevin-network:
   server1:
-    build: ./server1
+    build:
+      context: ./server1
+      dockerfile: Dockerfile
+      args:
+        - ENVIRONMENT=${ENVIRONMENT}
     container_name: ${CONTAINER_NAME_SERVER_1}
     environment:
       - VIRTUAL_HOST=${VIRTUAL_HOST_SERVER_1}
