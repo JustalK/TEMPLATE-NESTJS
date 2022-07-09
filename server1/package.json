@@ -24,7 +24,7 @@
     "doc:build": "npx @compodoc/compodoc -p tsconfig.json -s",
     "type:cov": "typescript-coverage-report --threshold=90",
     "check:package": "npx npm-check -i {@src/*,@test/*,@modules/*,@shared/*}",
-    "check:quality": "npx sonar-scanner -Dsonar.projectKey=server1 -Dsonar.sources=. -Dsonar.host.url=http://sonar.server1.net -Dsonar.login=sqp_4296868da6f3af4ca1d2ac9606cb5953ef01ea90"
+    "check:quality": "node sonar-project.js"
   },
   "dependencies": {
     "@nestjs/apollo": "^10.0.8",
@@ -119,7 +119,7 @@
     "collectCoverageFrom": [
       "**/*.(t|j)s"
     ],
-    "coverageDirectory": "../coverage",
+    "coverageDirectory": "./coverage",
     "collectCoverage": true,
     "coverageReporters": [
       "json",

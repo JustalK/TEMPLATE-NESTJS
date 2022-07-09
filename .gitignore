@@ -1,5 +1,6 @@
 server1/node_modules
 server1/coverage-ts
+server1/coverage
 server1/.scannerwork
 server1/package-lock.json
 server1/documentation
