@@ -23,7 +23,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "doc:build": "npx @compodoc/compodoc -p tsconfig.json -s",
     "type:cov": "typescript-coverage-report --threshold=90",
-    "check:package": "npx npm-check -i {@src/*,@test/*,@modules/*,@shared/*}"
+    "check:package": "npx npm-check -i {@src/*,@test/*,@modules/*,@shared/*}",
+    "check:quality": "npx sonar-scanner -Dsonar.projectKey=server1 -Dsonar.sources=. -Dsonar.host.url=http://sonar.server1.net -Dsonar.login=sqp_4296868da6f3af4ca1d2ac9606cb5953ef01ea90"
   },
   "dependencies": {
     "@nestjs/apollo": "^10.0.8",
@@ -91,6 +92,7 @@
     "loadtest": "^5.2.0",
     "mockingbird": "^2.1.2",
     "prettier": "^2.3.2",
+    "sonarqube-scanner": "^2.8.1",
     "supertest": "^6.2.3",
     "ts-jest": "^27.1.4",
     "ts-loader": "^9.2.3",
