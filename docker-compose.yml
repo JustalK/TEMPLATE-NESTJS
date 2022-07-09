@@ -34,6 +34,16 @@ services:
       retries: 3
     networks:
       kevin-network:
+  sonarqube:
+      container_name: labo-sonarqube
+      image:  sonarqube:latest
+      environment:
+        - VIRTUAL_HOST=${VIRTUAL_HOST_SONARQUBE}
+        - VIRTUAL_PORT=${VIRTUAL_PORT_SONARQUBE}
+      ports:
+        - "${VIRTUAL_PORT_SONARQUBE}"
+      networks:
+        kevin-network:
   server1:
     build:
       context: ./server1
