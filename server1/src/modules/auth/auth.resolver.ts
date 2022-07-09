@@ -1,4 +1,11 @@
-import { Args, Mutation, Resolver, Query } from '@nestjs/graphql';
+import {
+  Args,
+  Mutation,
+  Resolver,
+  Query,
+  ObjectType,
+  IntersectionType,
+} from '@nestjs/graphql';
 import { User } from '@modules/users/models/user.model';
 import { Payload } from '@modules/auth/models/payload.model';
 import { AuthService } from '@modules/auth/auth.service';
@@ -7,7 +14,6 @@ import { SigningArgs } from '@modules/auth/dto/signing.args';
 import { RefreshArgs } from '@modules/auth/dto/refresh.args';
 import { Public } from '@modules/auth/decorators/public.decorator';
 
-import { ObjectType, IntersectionType } from '@nestjs/graphql';
 @ObjectType()
 export class ResultUnion extends IntersectionType(User, Payload) {}
 
