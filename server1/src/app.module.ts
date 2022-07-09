@@ -7,7 +7,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { ThrottlerModule } from '@nestjs/throttler';
+import { GqlThrottlerGuard } from '@shared/gqlThrottlerGuard.guard';
 import configuration from '@shared/configs/configuration';
 import { WinstonModule } from 'nest-winston';
 import { WinstonOptionService } from '@shared/configs/services/winston-option.service';
@@ -62,7 +63,7 @@ if (process.env.NODE_ENV !== NODE_ENV_TEST) {
     },
     {
       provide: APP_GUARD,
-      useClass: ThrottlerGuard,
+      useClass: GqlThrottlerGuard,
     },
   ],
 })

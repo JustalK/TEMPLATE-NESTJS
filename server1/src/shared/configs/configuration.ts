@@ -10,11 +10,11 @@ export default () => ({
   },
   auth: {
     bearerToken: {
-      secret: 'test',
-      expiresIn: '1h',
+      secret: process.env.JWT_TOKEN_SECRET || 'test',
+      expiresIn: process.env.JWT_TOKEN_EXPIRATION || '1h',
     },
     refreshToken: {
-      expiresIn: '24h',
+      expiresIn: process.env.JWT_REFRESH_TOKEN_EXPIRATION || '24h',
     },
   },
   mongodb: {
