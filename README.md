@@ -13,9 +13,17 @@ This template is an example of what is a good starter for a nestjs project with 
 - **Quality of code**: For checking the quality of the code, `Sonar` has been configured and linked to the test and coverage
 - **Initialization of mongodb**: A script has been implemented for initializing mongodb upon creation with some data such the admin user.
 - **In memory database**: For improving the speed of the test's execution, the database has been connected to `mongodb-memory-server`
-- **Absolute Path**: Relative path at more than one level has been removed using module-alias for writting only absolute path
+- **Absolute Path**: Relative path at more than one level has been removed using `module-alias` for writting only absolute path
 - **Javascript Typing**: The entire code has been typed using `typescript`
 - **Javascript Typing Coverage**: The coverage of the typing of the element is checked using `typescript-coverage-report`
+- **Load testing**: The code can be tested against concurrency using `Artillery`
+- **Smoke testing**: Using `Artillery`, the main functionnalities of the code can be tested rapidly
+- **CRUD abstract class**: An abstract class for creating a rapid crud has been created. Every service can got the functionnalities by extending the class.
+- **Shared and custom exceptions**: A set of custom exceptions has been created for easily add new one based on the Nest.js one.
+- **Centralization of constants**: All the constants of the app has been centralized in one place
+- **Centralization of process environment variable**: All the variable for the configModule has been centralized in one place
+- **Documentation**: The documentation for the whole project is managed with `compodoc`
+- **Linter**: `Eslint` has been added to the project with also `prettier` for adding some rules of style
 
 ## Docker-compose
 
