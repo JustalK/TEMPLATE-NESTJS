@@ -2,7 +2,7 @@
 
 ## Description
 
-This template is an example of what is a good starter for a nestjs project with a system of authentification.
+This template could be considered like my **ultimate** template for Nest.js. A lot of thoughts has been put into it for having a structure flexible, a quality of code easy to review and an application easy to scale.
 
 ## Features
 
