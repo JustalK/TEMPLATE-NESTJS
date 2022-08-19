@@ -1,4 +1,5 @@
-server1/node_modules
+**/node_modules
+**/.docusaurus
 server1/coverage-ts
 server1/coverage
 server1/.scannerwork
